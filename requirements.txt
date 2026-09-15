@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+streamlit
+requests
+sqlalchemy
+mysql-connector-python
+python-multipart
+PyMuPDF
+langchain-text-splitters
