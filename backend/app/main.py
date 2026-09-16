@@ -5,6 +5,8 @@ from backend.app.database.session import get_db
 from backend.app.models.case import DueDiligenceCase
 from backend.app.models.documents import Document
 from backend.app.schemas import DueDiligenceRequest
+from backend.app.services.indexing_service import DocumentIndexingService
+from backend.app.services.rag_services import RAGService
 
 import os
 import shutil
@@ -77,14 +79,43 @@ def upload_document(case_id : int,
     db.commit()
     db.refresh(document)
 
-    return{
-        "message":"Document uploaded successfully",
-        "document_id":document.id,
-        "case_id":case_id,
-        "filename":file.filename,
-        "file_path":file_path,
-        "document_type":document.document_type,
-        "status": document.status
+    # Index document
+    # ---------------------------------
+
+    try:
+
+        indexing_service = DocumentIndexingService()
+
+        indexing_result = (
+            indexing_service.index_document(
+                file_path=file_path,
+                case_id=case_id,
+                document_id=document.id,
+                document_type=document_type
+            )
+        )
+
+        document.status = "indexed"
+        db.commit()
+
+    except Exception as e:
+
+        document.status = "indexing_failed"
+        db.commit()
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Document indexing failed: {str(e)}"
+        )
+
+    return {
+        "message": "Document uploaded and indexed successfully",
+        "document_id": document.id,
+        "case_id": document.case_id,
+        "filename": file.filename,
+        "document_type": document.document_type,
+        "status": document.status,
+        "indexing": indexing_result
     }
 
 @app.get("/api/v1/due-diligence/{case_id}/documents")
@@ -108,3 +139,30 @@ def get_documents(
         }
         for document in documents
     ]
+
+@app.post("/api/v1/due-diligence/{case_id}/ask")
+def ask_question(
+    case_id:int,
+    question: str,
+    db:Session = Depends(get_db)
+):
+    rag_service = RAGService()
+
+    try:
+        result = rag_service.answer_question(
+            question=question,
+            case_id=case_id,
+            top_k=5
+        )
+        return {
+            "case_id":case_id,
+            "question":question,
+            "answer": result["answer"],
+            "sources": result["sources"]
+        }
+
+    except Exception as e:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Question answering failed:{str(e)}"
+        )

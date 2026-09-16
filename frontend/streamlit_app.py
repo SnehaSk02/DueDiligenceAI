@@ -178,3 +178,74 @@ else:
             st.error(f"Could not retrieve documents;{response.text}")
     except requests.exceptions.ConnectionError:
         st.error("Could not connect to the FastAPI backend.")
+
+st.divider()
+st.header(" Ask Questions about your documents.")
+if "case_id" not in st.session_state:
+    st.info("Create a due diligence case first.")
+
+else:
+    case_id = st.session_state["case_id"]
+    question = st.text_area(
+        "Enter your question",
+        placeholder="e.g. What happened to the company's revenue in 2025?",
+        height=100
+        )
+    if st.button("Ask Question"):
+        if not question.strip():
+            st.warning("Please enter a question.")
+
+        else:
+            try:
+                response = requests.post(
+                    f"{API_URL}/api/v1/due-diligence/{case_id}/ask",
+                    params={
+                        "question": question
+                    }
+                )
+                if response.status_code ==200:
+                    result = response.json()
+                    st.subheader("Answer")
+
+                    st.write(result["answer"])
+
+                    st.subheader("Sources")
+
+                    if not result["sources"]:
+                        st.info("No sources were found.")
+                    else:
+                        for source in result["sources"]:
+                            with st.container(border=True):
+                                st.write(
+                                    "**Document:** "
+                                    f"{source['document_type']}"
+                                )
+
+                                st.write(
+                                    f"**Page:** "
+                                    f"{source['page_number']}"
+                                )
+
+                                st.write(
+                                    f"**Content Type:** "
+                                    f"{source['content_type']}"
+                                )
+
+                                st.write(
+                                    f"**Retrieval Score:** "
+                                    f"{source['score']:.4f}"
+                                )
+
+                else:
+                    st.error(
+                        f"Question answering failed: "
+                        f"{response.text}"
+                    )
+
+            except requests.exceptions.ConnectionError:
+
+                st.error(
+                    "Could not connect to the FastAPI backend. "
+                    "Make sure FastAPI is running."
+                )
+                                
