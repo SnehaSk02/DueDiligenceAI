@@ -19,7 +19,7 @@ class QdrantManager:
         if not qdrant_api_key:
             raise ValueError("QDRANT_API_KEY is not configured.")
 
-        self.client =QdrantClient(url = qdrant_url,api_key=qdrant_api_key)
+        self.client =QdrantClient(url = qdrant_url,api_key=qdrant_api_key,timeout=60)
 
     def create_collection(self):
         collections = self.client.get_collections()
@@ -36,18 +36,31 @@ class QdrantManager:
         print(f"Collection '{self.collection_name}' created successfully.")
 
     #storing vectors
-    def upsert_chunks(self,embeddings,chunks):
+    def upsert_chunks(self,embeddings,chunks,batch_size:int =32):
         if not embeddings:
             return
 
-        points = []
+        if len(embeddings) != len(chunks):
+            raise ValueError(
+            "Number of embeddings does not match number of chunks.")
 
-        for embedding, chunk in zip(embeddings,chunks):
-            point= PointStruct(
-                id=str(uuid5(NAMESPACE_DNS,
+        total_chunks = len(chunks)
+
+        for start in range(0, total_chunks, batch_size):
+
+            end = min(start + batch_size, total_chunks)
+
+            batch_embeddings = embeddings[start:end]
+            batch_chunks = chunks[start:end]
+
+            points = []
+
+            for embedding, chunk in zip(batch_embeddings,batch_chunks):
+                point= PointStruct(
+                    id=str(uuid5(NAMESPACE_DNS,
                                     f"{chunk['case_id']}_{chunk['document_id']}_{chunk['chunk_index']}")),                
-                vector = embedding,
-                payload = {
+                    vector = embedding,
+                    payload = {
                     "case_id": chunk["case_id"],
                     "document_id": chunk["document_id"],
                     "document_type": chunk["document_type"],
@@ -58,12 +71,17 @@ class QdrantManager:
 
                 }
             )
-            points.append(point)
+                points.append(point)
 
-        self.client.upsert(collection_name=self.collection_name,
+            self.client.upsert(collection_name=self.collection_name,
                            points=points)
 
-        print(f"{len(points)} chunks stored in Qdrant.")
+            print(
+            f"Uploaded chunks {start + 1}-{end} "
+            f"of {total_chunks}"
+        )
+
+        print(f"{total_chunks} chunks stored in Qdrant.")
 
     def create_payload_indexes(self):
         """
