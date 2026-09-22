@@ -3,7 +3,7 @@ from typing import List, Dict
 from backend.app.services.embedder import embedding_service
 from backend.app.services.qdrant_manager import QdrantManager
 from backend.app.services.llm_service import LLMService
-
+from backend.app.services.reranker import reranker
 class RAGService:
     """
     Handles query embedding and retrieval of relevant
@@ -17,7 +17,9 @@ class RAGService:
         self,
         question: str,
         case_id: int,
-        top_k: int = 5
+        top_k: int = 5,
+        rerank: bool = False,
+        retrieval_k: int = 10
     ) -> List[Dict]:
         """
         Retrieve the most relevant document chunks
@@ -54,6 +56,9 @@ class RAGService:
                 "chunk_index": payload.get("chunk_index"),
                 "text": payload.get("text")
             })
+        retrieved_chunks = reranker.rerank(question=question,
+                                           documents=retrieved_chunks,
+                                           top_k=top_k)
 
         return retrieved_chunks
 

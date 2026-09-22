@@ -1,0 +1,276 @@
+[
+  {
+    "id": "q1",
+    "question": "What was Microsoft's revenue in fiscal year 2025?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 294
+      }
+    ],
+    "reference_answer": "Microsoft's revenue was $281.724 billion in fiscal year 2025."
+  },
+  {
+    "id": "q2",
+    "question": "How did Microsoft's revenue change in fiscal year 2025 compared with fiscal year 2024?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 104
+      }
+    ],
+    "reference_answer": "Microsoft's revenue increased by $36.6 billion, or 15%, in fiscal year 2025 compared with fiscal year 2024."
+  },
+  {
+    "id": "q3",
+    "question": "What was Microsoft Cloud revenue in fiscal year 2025?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 295
+      }
+    ],
+    "reference_answer": "Microsoft Cloud revenue was $168.9 billion in fiscal year 2025."
+  },
+  {
+    "id": "q4",
+    "question": "What was Microsoft net income in fiscal year 2025?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 104
+      }
+    ],
+    "reference_answer": "Microsoft's net income was $101.832 billion in fiscal year 2025."
+  },
+  {
+    "id": "q5",
+    "question": "What was Microsoft operating income in fiscal year 2025?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 104
+      }
+    ],
+    "reference_answer": "Microsoft's operating income was $128.528 billion in fiscal year 2025."
+  },
+  {
+    "id": "q6",
+    "question": "What financial market risks does Microsoft face?",
+    "case_id": 13,
+    "expected_routes": [
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 154
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 155
+      }
+    ],
+    "reference_answer": "Microsoft faces foreign currency, interest rate, credit, and equity price risks. Its sensitivity analysis quantifies the potential effects of changes in foreign exchange rates, U.S. Treasury interest rates, credit spreads, and equity market prices."
+  },
+  {
+    "id": "q7",
+    "question": "How does Microsoft manage its foreign currency risk?",
+    "case_id": 13,
+    "expected_routes": [
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 220
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 221
+      }
+    ],
+    "reference_answer": "Microsoft monitors its foreign currency exposures daily and uses derivative instruments, including foreign exchange forward contracts and options, to manage foreign currency exposures and hedge certain Euro-denominated debt."
+  },
+  {
+    "id": "q8",
+    "question": "What interest rate risks does Microsoft face?",
+    "case_id": 13,
+    "expected_routes": [
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 155
+      }
+    ],
+    "reference_answer": "Microsoft faces interest-rate risk related to its fixed-income securities. Its sensitivity analysis indicates that a 100-basis-point increase in U.S. Treasury interest rates would reduce fair value by approximately $1.415 billion."
+  },
+  {
+    "id": "q9",
+    "question": "What are Microsoft's main business segments?",
+    "case_id": 13,
+    "expected_routes": [
+      "general"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 39
+      }
+    ],
+    "reference_answer": "Microsoft reports its business using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+  },
+  {
+    "id": "q10",
+    "question": "What are Microsoft's three main operating segments, and what does each segment primarily include?",
+    "case_id": 13,
+    "expected_routes": [
+      "general"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 39
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 286
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 287
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 289
+      }
+    ],
+    "reference_answer": "Microsoft reports three main operating segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. Productivity and Business Processes primarily includes Microsoft 365 Commercial and Consumer products and cloud services, LinkedIn, and Dynamics products and cloud services. Intelligent Cloud primarily includes server products and cloud services such as Azure and other cloud services, as well as server products such as SQL Server, Windows Server, Visual Studio, and System Center. More Personal Computing primarily includes Windows and Devices, Gaming, and Search and news advertising."
+  },
+  {
+    "id": "q11",
+    "question": "What are the main products and services included in Microsoft's Intelligent Cloud segment?",
+    "case_id": 13,
+    "expected_routes": [
+      "general"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 287
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 48
+      }
+    ],
+    "reference_answer": "Microsoft's Intelligent Cloud segment primarily includes server products and cloud services such as Azure and other cloud services, cloud and AI consumption-based services, GitHub cloud services, Nuance Healthcare cloud services, virtual desktop offerings, SQL Server, Windows Server, Visual Studio, and System Center. It also includes enterprise and partner services such as Enterprise Support Services, Industry Solutions, Nuance professional services, Microsoft Partner Network, and Learning Experience."
+  },
+  {
+    "id": "q12",
+    "question": "How does Microsoft manage its foreign currency risk?",
+    "case_id": 13,
+    "expected_routes": [
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 220
+      }
+    ],
+    "reference_answer": "Microsoft monitors its foreign currency exposures daily to manage the economic effectiveness of its foreign currency positions, including hedges. It also uses derivative instruments, including foreign exchange forward contracts, to manage foreign currency exposures and hedge certain Euro-denominated debt."
+  },
+  {
+    "id": "q13",
+    "question": "How did Microsoft's revenue change in fiscal year 2025, and what foreign currency risks did the company face?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial",
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 104
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      }
+    ],
+    "reference_answer": "Microsoft's revenue increased by $36.6 billion, or 15%, in fiscal year 2025 compared with fiscal year 2024. The company faced foreign currency risk from its foreign currency exposures and monitored those exposures daily, including hedges."
+  },
+  {
+    "id": "q14",
+    "question": "What was Microsoft operating income in fiscal year 2025, and what interest rate risks did the company face?",
+    "case_id": 13,
+    "expected_routes": [
+      "financial",
+      "risk"
+    ],
+    "relevant_chunks": [
+      {
+        "document_id": 13,
+        "chunk_index": 104
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 153
+      },
+      {
+        "document_id": 13,
+        "chunk_index": 155
+      }
+    ],
+    "reference_answer": "Microsoft's operating income was $128.528 billion in fiscal year 2025. The company faced interest-rate risk related to its fixed-income securities; its sensitivity analysis indicated that a 100-basis-point increase in U.S. Treasury interest rates would reduce fair value by approximately $1.415 billion."
+  },
+  {
+    "id": "q15",
+    "question": "What is Microsoft's employee satisfaction score in India for 2025?",
+    "case_id": 13,
+    "expected_routes": [
+      "general"
+    ],
+    "relevant_chunks": [],
+    "reference_answer": "The information is not available in the provided documents."
+  }
+]

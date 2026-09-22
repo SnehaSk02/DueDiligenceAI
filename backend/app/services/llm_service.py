@@ -55,4 +55,17 @@ ANSWER:
 
         return response.choices[0].message.content.strip()
 
+    def generate_judge_response(self, prompt:str)-> str:
+        response = self.client.chat.completions.create(
+            model = self.model,
+            messages=[
+                {
+                    "role":"user",
+                    "content": prompt
+                }
+            ],
+            temperature=0
+        )    
+        return response.choices[0].message.content.strip()
+
     

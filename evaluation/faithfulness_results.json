@@ -1,0 +1,431 @@
+{
+  "total_questions": 15,
+  "evaluated_questions": 14,
+  "average_faithfulness": 0.989010989010989,
+  "results": [
+    {
+      "id": "q1",
+      "question": "What was Microsoft's revenue in fiscal year 2025?",
+      "generated_answer": "Microsoft’s revenue for fiscal year 2025 was $281,724 million (approximately $281.7 billion).",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s revenue for fiscal year 2025 was $281,724 million (approximately $281.7 billion).",
+          "supported": true,
+          "evidence_basis": "The Annual Report table (page 79) lists the total revenue for the year ended June 30, 2025 as $281,724 million, matching the figure stated in the answer."
+        }
+      ],
+      "reason": "The generated answer contains a single factual claim about Microsoft’s FY2025 revenue. The retrieved evidence includes a financial table that explicitly reports total revenue of $281,724 million for FY2025, directly supporting the claim."
+    },
+    {
+      "id": "q2",
+      "question": "How did Microsoft's revenue change in fiscal year 2025 compared with fiscal year 2024?",
+      "generated_answer": "Microsoft’s revenue grew by $36.6 billion in fiscal year 2025 versus fiscal year 2024, representing a 15% increase.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s revenue grew by $36.6 billion in fiscal year 2025 versus fiscal year 2024",
+          "supported": true,
+          "evidence_basis": "The Annual Report (page 25) states: \"Revenue increased $36.6 billion or 15%...\" which directly confirms the $36.6 billion increase from FY2024 to FY2025."
+        },
+        {
+          "claim": "The revenue increase represents a 15% increase",
+          "supported": true,
+          "evidence_basis": "The same passage on page 25 notes the increase was \"$36.6 billion or 15%,\" confirming the percentage change."
+        }
+      ],
+      "reason": "Both factual statements in the generated answer are explicitly corroborated by the retrieved evidence from the Annual Report, which provides the exact dollar amount and percentage increase for FY2025 versus FY2024."
+    },
+    {
+      "id": "q3",
+      "question": "What was Microsoft Cloud revenue in fiscal year 2025?",
+      "generated_answer": "Microsoft Cloud revenue in fiscal year 2025 was $168.9 billion.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft Cloud revenue in fiscal year 2025 was $168.9 billion.",
+          "supported": true,
+          "evidence_basis": "The retrieved evidence explicitly states that Microsoft Cloud revenue was $168.9 billion in fiscal year 2025 (e.g., “Our Microsoft Cloud revenue … was $168.9 billion … in fiscal years 2025 …” and “Microsoft Cloud revenue increased 23% to $168.9 billion”)."
+        }
+      ],
+      "reason": "The single factual claim in the answer is directly confirmed by multiple excerpts from the annual report, which provide the exact revenue figure for fiscal year 2025."
+    },
+    {
+      "id": "q4",
+      "question": "What was Microsoft net income in fiscal year 2025?",
+      "generated_answer": "Microsoft reported net income of $101.83 billion for fiscal year 2025.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft reported net income of $101.83 billion for fiscal year 2025.",
+          "supported": true,
+          "evidence_basis": "The Annual Report (page 25) lists Net income as 101.83 (presumably in billions) for fiscal year 2025, directly matching the claim."
+        }
+      ],
+      "reason": "The retrieved evidence contains a specific net income figure of 101.83 for FY2025, which aligns with the answer's statement, so the claim is supported."
+    },
+    {
+      "id": "q5",
+      "question": "What was Microsoft operating income in fiscal year 2025?",
+      "generated_answer": "Microsoft’s operating income for fiscal year 2025 was approximately $128.5 billion.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s operating income for fiscal year 2025 was approximately $128.5 billion.",
+          "supported": true,
+          "evidence_basis": "The evidence on page 25 of the Annual Report lists Operating income as 128.52 (presumably in billions) for fiscal year 2025, matching the $128.5 billion figure."
+        }
+      ],
+      "reason": "The retrieved document provides a specific operating income figure for FY2025 that aligns with the claim, so the claim is supported by the evidence."
+    },
+    {
+      "id": "q6",
+      "question": "What financial market risks does Microsoft face?",
+      "generated_answer": "Microsoft is exposed to four primary financial‑market risks:\n\n* **Foreign‑currency risk** – changes in exchange rates for the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar can affect assets, liabilities, revenue and earnings. A 10 % decline in foreign‑exchange rates is projected to reduce earnings by about $11.6 billion.  \n* **Interest‑rate risk** – fluctuations in U.S. Treasury rates affect the fair value of its fixed‑income portfolio; a 100‑basis‑point rise would lower fair value by roughly $1.4 billion.  \n* **Credit‑spread risk** – widening credit spreads impact the fair value of credit‑related holdings; a 100‑basis‑point increase could reduce fair value by about $436 million.  \n* **Equity‑price risk** – declines in equity market prices affect earnings; a 10 % drop in equity prices is estimated to cut earnings by approximately $1.2 billion.  \n\nMicrosoft manages these exposures, in part, through derivative instruments such as foreign‑exchange forwards, interest‑rate hedges, equity‑price hedges and credit‑related derivatives.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft is exposed to four primary financial‑market risks: foreign‑currency risk, interest‑rate risk, credit‑spread risk, and equity‑price risk.",
+          "supported": true,
+          "evidence_basis": "The annual report (page 36) lists exposure to foreign exchange rates, interest rates, credit risk, and equity prices."
+        },
+        {
+          "claim": "Foreign‑currency risk – changes in exchange rates for the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar can affect assets, liabilities, revenue and earnings.",
+          "supported": true,
+          "evidence_basis": "Page 36 of the annual report identifies those currencies as principal foreign‑currency exposures."
+        },
+        {
+          "claim": "A 10 % decline in foreign‑exchange rates is projected to reduce earnings by about $11.6 billion.",
+          "supported": true,
+          "evidence_basis": "The hypothetical change table (page 36) shows a 10% decrease in foreign exchange rates resulting in earnings impact of (11,596) million dollars, i.e., roughly $11.6 billion."
+        },
+        {
+          "claim": "Interest‑rate risk – fluctuations in U.S. Treasury rates affect the fair value of its fixed‑income portfolio; a 100‑basis‑point rise would lower fair value by roughly $1.4 billion.",
+          "supported": true,
+          "evidence_basis": "The same table (page 36) lists a 100‑basis‑point increase in U.S. Treasury rates reducing fair value by (1,415) million dollars, about $1.4 billion."
+        },
+        {
+          "claim": "Credit‑spread risk – widening credit spreads impact the fair value of credit‑related holdings; a 100‑basis‑point increase could reduce fair value by about $436 million.",
+          "supported": true,
+          "evidence_basis": "The table (page 36) shows a 100‑basis‑point increase in credit spreads decreasing fair value by (436) million dollars."
+        },
+        {
+          "claim": "Equity‑price risk – declines in equity market prices affect earnings; a 10 % drop in equity prices is estimated to cut earnings by approximately $1.2 billion.",
+          "supported": true,
+          "evidence_basis": "The table (page 36) indicates a 10% decrease in equity market prices reduces earnings by (1,213) million dollars, about $1.2 billion."
+        },
+        {
+          "claim": "Microsoft manages these exposures, in part, through derivative instruments such as foreign‑exchange forwards, interest‑rate hedges, equity‑price hedges and credit‑related derivatives.",
+          "supported": true,
+          "evidence_basis": "Note 5 – Derivatives (page 57) states Microsoft uses derivatives to manage risks related to foreign currencies, interest rates, equity prices, and credit."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly corroborated by the retrieved sections of Microsoft’s annual report, which provide the same risk categories, currency list, quantitative impact figures, and derivative usage."
+    },
+    {
+      "id": "q7",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "generated_answer": "Microsoft manages foreign‑currency risk by actively monitoring its currency exposures each day and using derivative instruments to hedge those exposures. It employs foreign‑exchange forward contracts—particularly to hedge Euro‑denominated debt—as cash‑flow hedging instruments, and maintains both hedge‑qualified and non‑qualified derivative programs to reduce or eliminate the economic impact of currency fluctuations. Assets and liabilities in foreign currencies are translated at the balance‑sheet date rate, while revenue and expenses are translated at average rates for the period; any resulting translation adjustments are recorded in other comprehensive income.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft actively monitors its currency exposures each day",
+          "supported": true,
+          "evidence_basis": "The annual report (page 36) states that Microsoft monitors its foreign currency exposures daily."
+        },
+        {
+          "claim": "Microsoft uses derivative instruments to hedge those exposures",
+          "supported": true,
+          "evidence_basis": "The report (page 36 and page 57) notes that Microsoft uses derivative instruments to manage foreign‑currency risk."
+        },
+        {
+          "claim": "Microsoft employs foreign‑exchange forward contracts, particularly to hedge Euro‑denominated debt, as cash‑flow hedging instruments",
+          "supported": true,
+          "evidence_basis": "Page 57 (Note 5 – Derivatives) specifies that Euro‑denominated debt is hedged using foreign‑exchange forward contracts designated as cash‑flow hedges."
+        },
+        {
+          "claim": "Microsoft maintains both hedge‑qualified and non‑qualified derivative programs to reduce or eliminate the economic impact of currency fluctuations",
+          "supported": true,
+          "evidence_basis": "Page 57 describes derivative programs that include strategies that both qualify and do not qualify for hedge accounting treatment, aimed at reducing the economic impact of exposures."
+        },
+        {
+          "claim": "Assets and liabilities in foreign currencies are translated at the balance‑sheet date rate",
+          "supported": true,
+          "evidence_basis": "Page 44 states that assets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance‑sheet date."
+        },
+        {
+          "claim": "Revenue and expenses are translated at average rates for the period",
+          "supported": true,
+          "evidence_basis": "Page 44 notes that revenue and expenses are translated at average rates of exchange prevailing during the year."
+        },
+        {
+          "claim": "Any resulting translation adjustments are recorded in other comprehensive income",
+          "supported": true,
+          "evidence_basis": "Page 44 indicates that translation adjustments resulting from this process are recorded to other comprehensive income."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly corroborated by the retrieved sections of Microsoft's annual report, providing explicit evidence for each claim."
+    },
+    {
+      "id": "q8",
+      "question": "What interest rate risks does Microsoft face?",
+      "generated_answer": "Microsoft’s interest‑rate risk stems from the securities it holds in its fixed‑income portfolio. Because the portfolio’s holdings have varying maturities, changes in interest rates affect their fair value. In its risk sensitivity analysis, a hypothetical 100‑basis‑point increase in U.S. Treasury rates would reduce the fair value of the portfolio by about $1,415.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s interest‑rate risk stems from the securities it holds in its fixed‑income portfolio.",
+          "supported": true,
+          "evidence_basis": "The annual report (page 36) states that securities held in the fixed‑income portfolio are subject to interest‑rate risk."
+        },
+        {
+          "claim": "Because the portfolio’s holdings have varying maturities, changes in interest rates affect their fair value.",
+          "supported": true,
+          "evidence_basis": "The same section notes that securities have different maturities, leading to varying interest‑rate risk, and the sensitivity table shows the impact on fair value."
+        },
+        {
+          "claim": "In its risk sensitivity analysis, a hypothetical 100‑basis‑point increase in U.S. Treasury rates would reduce the fair value of the portfolio by about $1,415.",
+          "supported": true,
+          "evidence_basis": "The sensitivity table (page 36) lists a 100‑basis‑point increase in U.S. Treasury rates resulting in a (1,415) impact on fair value."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly corroborated by the retrieved excerpts from Microsoft’s annual report, which describe the source of interest‑rate risk, the effect of maturity differences, and the quantified impact of a 100‑basis‑point rate increase."
+    },
+    {
+      "id": "q9",
+      "question": "What are Microsoft's main business segments?",
+      "generated_answer": "Microsoft’s business is organized into three primary operating segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s business is organized into three primary operating segments",
+          "supported": true,
+          "evidence_basis": "The Annual Report (page 12) states: \"We operate our business and report our financial performance using three segments...\" confirming the three‑segment structure."
+        },
+        {
+          "claim": "The three primary operating segments are Productivity and Business Processes, Intelligent Cloud, and More Personal Computing",
+          "supported": true,
+          "evidence_basis": "The same Annual Report excerpt (page 12) lists the three segments explicitly as \"Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.\""
+        }
+      ],
+      "reason": "Both factual statements in the generated answer are directly corroborated by the retrieved evidence from the company's annual report, which describes the three operating segments and names them."
+    },
+    {
+      "id": "q10",
+      "question": "What are Microsoft's three main operating segments, and what does each segment primarily include?",
+      "generated_answer": "Microsoft reports its business in three operating segments:\n\n1. **Productivity and Business Processes** – This segment primarily comprises Microsoft 365 products and cloud services. It includes the commercial side (Microsoft 365 Commercial cloud, Enterprise Mobility + Security, the cloud portion of Windows Commercial, the per‑user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, Microsoft 365 Copilot, as well as on‑premises Windows Commercial and Office) and the consumer side (Microsoft 365 Consumer subscriptions, Office licensed on‑premises, and other consumer services).\n\n2. **Intelligent Cloud** – The provided documents do not specify the products or services that are primarily included in this segment.\n\n3. **More Personal Computing** – This segment primarily comprises:\n   * **Windows and Devices** – Windows OEM licensing (Windows Pro and non‑Pro licenses sold through OEM channels) and devices such as Surface and PC accessories.  \n   * **Gaming** – Xbox hardware and Xbox content and services, including first‑ and third‑party games, Xbox Game Pass, Xbox Cloud Gaming, advertising, and other cloud services.  \n   * **Search and news advertising** – Bing and Copilot, Microsoft News, Microsoft Edge, and third‑party affiliates.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft reports its business in three operating segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+          "supported": true,
+          "evidence_basis": "The Annual Report excerpt lists the three reportable segments as Productivity and Business Processes, Intelligent Cloud, and More Personal Computing."
+        },
+        {
+          "claim": "The Productivity and Business Processes segment primarily comprises Microsoft 365 products and cloud services, including Microsoft 365 Commercial cloud, Enterprise Mobility + Security, the cloud portion of Windows Commercial, the per‑user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, Microsoft 365 Copilot, on‑premises Windows Commercial and Office, as well as Microsoft 365 Consumer subscriptions, Office licensed on‑premises, and other consumer services.",
+          "supported": true,
+          "evidence_basis": "Multiple Annual Report excerpts describe the Productivity and Business Processes segment as consisting of Microsoft 365 Commercial products and cloud services (listing the same components) and Microsoft 365 Consumer products and services."
+        },
+        {
+          "claim": "The provided documents do not specify the products or services that are primarily included in the Intelligent Cloud segment.",
+          "supported": true,
+          "evidence_basis": "The retrieved evidence contains detailed descriptions for Productivity and Business Processes and More Personal Computing, but no description of the composition of the Intelligent Cloud segment, indicating the documents do not specify it."
+        },
+        {
+          "claim": "The More Personal Computing segment primarily comprises Windows and Devices, including Windows OEM licensing (Windows Pro and non‑Pro licenses sold through OEM channels) and devices such as Surface and PC accessories.",
+          "supported": true,
+          "evidence_basis": "The Annual Report page on More Personal Computing lists Windows and Devices with Windows OEM licensing and Surface/PC accessories as primary components."
+        },
+        {
+          "claim": "The More Personal Computing segment primarily comprises Gaming, including Xbox hardware and Xbox content and services, first‑ and third‑party games, Xbox Game Pass, Xbox Cloud Gaming, advertising, and other cloud services.",
+          "supported": true,
+          "evidence_basis": "The same Annual Report excerpt for More Personal Computing lists Gaming with Xbox hardware, content, Game Pass, Cloud Gaming, advertising, and other cloud services."
+        },
+        {
+          "claim": "The More Personal Computing segment primarily comprises Search and news advertising, including Bing and Copilot, Microsoft News, Microsoft Edge, and third‑party affiliates.",
+          "supported": true,
+          "evidence_basis": "The Annual Report description of More Personal Computing includes Search and news advertising comprising Bing, Copilot, Microsoft News, Edge, and third‑party affiliates."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly supported by the retrieved Annual Report excerpts, which provide the segment names and detailed component listings for Productivity and Business Processes and More Personal Computing, and the absence of detail for Intelligent Cloud confirms the claim that the documents do not specify its composition."
+    },
+    {
+      "id": "q11",
+      "question": "What are the main products and services included in Microsoft's Intelligent Cloud segment?",
+      "generated_answer": "Microsoft’s Intelligent Cloud segment is built around three groups of offerings:\n\n* **Server products and cloud services** – Azure and other cloud services that provide consumption‑based cloud and AI capabilities, GitHub cloud services, Nuage Healthcare cloud services, virtual‑desktop offerings, and additional cloud services; plus on‑premises and hybrid server products such as SQL Server, Windows Server, Visual Studio, System Center, related Client Access Licenses and other on‑premises solutions.  \n\n* **Enterprise and partner services** – Enterprise Support Services, Industry Solutions, Nuance professional services, the Microsoft Partner Network and Learning Experience offerings.  \n\nThese components together constitute the core of Microsoft’s Intelligent Cloud segment.",
+      "faithfulness_score": 0.8461538461538461,
+      "claims": [
+        {
+          "claim": "Microsoft’s Intelligent Cloud segment is built around three groups of offerings.",
+          "supported": false,
+          "evidence_basis": "The retrieved evidence only describes two groups: \"Server products and cloud services\" and \"Enterprise and partner services\"; no third group is mentioned."
+        },
+        {
+          "claim": "Server products and cloud services include Azure and other cloud services that provide consumption‑based cloud and AI capabilities.",
+          "supported": true,
+          "evidence_basis": "Evidence states: \"Server products and cloud services, including Azure and other cloud services, comprising cloud and AI consumption‑based services...\""
+        },
+        {
+          "claim": "Server products and cloud services include GitHub cloud services.",
+          "supported": true,
+          "evidence_basis": "Evidence lists \"GitHub cloud services\" as part of the server products and cloud services."
+        },
+        {
+          "claim": "Server products and cloud services include Nuage Healthcare cloud services.",
+          "supported": false,
+          "evidence_basis": "The evidence mentions \"Nuance Healthcare cloud services\"; the answer’s term \"Nuage\" does not match the evidence."
+        },
+        {
+          "claim": "Server products and cloud services include virtual‑desktop offerings.",
+          "supported": true,
+          "evidence_basis": "Evidence includes \"virtual desktop offerings\" among the cloud services."
+        },
+        {
+          "claim": "Server products and cloud services include additional cloud services.",
+          "supported": true,
+          "evidence_basis": "Evidence refers to \"other cloud services\" in addition to the listed ones."
+        },
+        {
+          "claim": "Server products and cloud services include on‑premises and hybrid server products such as SQL Server, Windows Server, Visual Studio, System Center, related Client Access Licenses and other on‑premises solutions.",
+          "supported": true,
+          "evidence_basis": "Evidence lists exactly these products: \"SQL Server, Windows Server, Visual Studio, System Center, related Client Access Licenses (CALs), and other on‑premises offerings.\""
+        },
+        {
+          "claim": "Enterprise and partner services include Enterprise Support Services.",
+          "supported": true,
+          "evidence_basis": "Evidence lists \"Enterprise Support Services\" under Enterprise and partner services."
+        },
+        {
+          "claim": "Enterprise and partner services include Industry Solutions.",
+          "supported": true,
+          "evidence_basis": "Evidence lists \"Industry Solutions\" as part of Enterprise and partner services."
+        },
+        {
+          "claim": "Enterprise and partner services include Nuance professional services.",
+          "supported": true,
+          "evidence_basis": "Evidence includes \"Nuance professional services\" in the Enterprise and partner services list."
+        },
+        {
+          "claim": "Enterprise and partner services include the Microsoft Partner Network.",
+          "supported": true,
+          "evidence_basis": "Evidence mentions \"Microsoft Partner Network\" among Enterprise and partner services."
+        },
+        {
+          "claim": "Enterprise and partner services include Learning Experience offerings.",
+          "supported": true,
+          "evidence_basis": "Evidence lists \"Learning Experience\" as part of Enterprise and partner services."
+        },
+        {
+          "claim": "These components together constitute the core of Microsoft’s Intelligent Cloud segment.",
+          "supported": true,
+          "evidence_basis": "Evidence describes these components as the primary composition of the Intelligent Cloud segment."
+        }
+      ],
+      "reason": "Each factual statement from the generated answer was compared against the retrieved evidence. All statements about specific products and services are directly supported, except for the claim of three groups (evidence shows only two) and the misspelled \"Nuage Healthcare\" (evidence uses \"Nuance Healthcare\")."
+    },
+    {
+      "id": "q12",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "generated_answer": "Microsoft manages its foreign‑currency risk by actively monitoring its currency exposures each day and using derivative instruments to hedge those exposures.  The company employs foreign‑exchange forward contracts—designated as cash‑flow hedges—to offset the risk on forecasted transactions, assets, liabilities and, in particular, Euro‑denominated debt.  Its derivative program includes both hedge‑accounting‑qualified and non‑qualified strategies aimed at reducing, eliminating, or efficiently managing the economic impact of currency fluctuations.  Assets and liabilities recorded in foreign currencies are translated at the balance‑sheet date rate, while revenue and expenses are translated at average rates for the period; any resulting translation adjustments are recorded in other comprehensive income.  Principal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft actively monitors its foreign currency exposures each day",
+          "supported": true,
+          "evidence_basis": "Annual Report page 36 states the company monitors foreign currency exposures daily."
+        },
+        {
+          "claim": "Microsoft uses derivative instruments to hedge those exposures",
+          "supported": true,
+          "evidence_basis": "Annual Report page 36 notes the use of derivative instruments to manage foreign currency risk."
+        },
+        {
+          "claim": "Microsoft employs foreign‑exchange forward contracts designated as cash‑flow hedges to offset risk on forecasted transactions, assets, liabilities and Euro‑denominated debt",
+          "supported": true,
+          "evidence_basis": "Annual Report page 57 describes hedging Euro‑denominated debt with foreign exchange forward contracts designated as cash‑flow hedges."
+        },
+        {
+          "claim": "Microsoft’s derivative program includes both hedge‑accounting‑qualified and non‑qualified strategies aimed at reducing, eliminating, or efficiently managing the economic impact of currency fluctuations",
+          "supported": true,
+          "evidence_basis": "Annual Report page 57 notes the derivative program includes strategies that qualify and do not qualify for hedge accounting and aim to reduce, eliminate, or efficiently manage economic impact."
+        },
+        {
+          "claim": "Assets and liabilities recorded in foreign currencies are translated at the balance‑sheet date rate",
+          "supported": true,
+          "evidence_basis": "Annual Report page 44 states assets and liabilities are translated at the exchange rate on the balance‑sheet date."
+        },
+        {
+          "claim": "Revenue and expenses are translated at average rates for the period",
+          "supported": true,
+          "evidence_basis": "Annual Report page 44 says revenue and expenses are translated at average rates of exchange prevailing during the year."
+        },
+        {
+          "claim": "Translation adjustments are recorded in other comprehensive income",
+          "supported": true,
+          "evidence_basis": "Annual Report page 44 notes translation adjustments are recorded to other comprehensive income."
+        },
+        {
+          "claim": "Principal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar",
+          "supported": true,
+          "evidence_basis": "Annual Report page 36 lists these currencies as principal exposures."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly corroborated by the retrieved sections of Microsoft’s Annual Report."
+    },
+    {
+      "id": "q13",
+      "question": "How did Microsoft's revenue change in fiscal year 2025, and what foreign currency risks did the company face?",
+      "generated_answer": "Microsoft’s revenue grew by $36.6 billion in fiscal 2025, representing a 15 % increase over fiscal 2024.  \n\nThe company disclosed foreign‑currency risk that a 10 % decline in foreign‑exchange rates would cut revenue‑related earnings by roughly $11.6 billion. Its exposures arise from forecasted transactions, assets and liabilities denominated in major currencies—including the euro, Japanese yen, British pound, Canadian dollar and Australian dollar. Microsoft monitors these exposures daily and uses derivative instruments such as foreign‑exchange forward contracts to hedge the associated risks.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft’s revenue grew by $36.6 billion in fiscal 2025, representing a 15 % increase over fiscal 2024.",
+          "supported": true,
+          "evidence_basis": "Page 25 of the Annual Report states “Revenue increased $36.6 billion or 15% with growth across each of our segments.”"
+        },
+        {
+          "claim": "The company disclosed foreign‑currency risk that a 10 % decline in foreign‑exchange rates would cut revenue‑related earnings by roughly $11.6 billion.",
+          "supported": true,
+          "evidence_basis": "Page 36 shows a hypothetical 10% decrease in foreign exchange rates would impact earnings by $(11,596) million, i.e., about $11.6 billion."
+        },
+        {
+          "claim": "Its exposures arise from forecasted transactions, assets and liabilities denominated in major currencies—including the euro, Japanese yen, British pound, Canadian dollar and Australian dollar.",
+          "supported": true,
+          "evidence_basis": "Page 36 (risk section) lists principal currency exposures as Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar, and notes that certain forecasted transactions, assets, and liabilities are exposed to foreign‑currency risk."
+        },
+        {
+          "claim": "Microsoft monitors these exposures daily and uses derivative instruments such as foreign‑exchange forward contracts to hedge the associated risks.",
+          "supported": true,
+          "evidence_basis": "Page 36 states Microsoft monitors foreign‑currency exposures daily; page 57 notes that foreign‑currency risks are hedged using foreign‑exchange forward contracts."
+        }
+      ],
+      "reason": "All factual statements in the generated answer are directly corroborated by the retrieved sections of the Annual Report, providing quantitative figures, risk disclosures, and hedging practices."
+    },
+    {
+      "id": "q14",
+      "question": "What was Microsoft operating income in fiscal year 2025, and what interest rate risks did the company face?",
+      "generated_answer": "Microsoft reported operating income of $128.5 billion for fiscal year 2025.  \n\nThe company is exposed to interest‑rate risk on its fixed‑income portfolio: a hypothetical 100‑basis‑point increase in U.S. Treasury rates would reduce the fair value of those holdings by roughly $1.4 billion, and the risk varies with the maturities of the securities, requiring active management of portfolio duration.",
+      "faithfulness_score": 1.0,
+      "claims": [
+        {
+          "claim": "Microsoft reported operating income of $128.5 billion for fiscal year 2025.",
+          "supported": true,
+          "evidence_basis": "The Annual Report (page 25) lists operating income as 128,52 (i.e., $128.52 billion), which matches the $128.5 billion figure."
+        },
+        {
+          "claim": "The company is exposed to interest‑rate risk on its fixed‑income portfolio: a hypothetical 100‑basis‑point increase in U.S. Treasury rates would reduce the fair value of those holdings by roughly $1.4 billion, and the risk varies with the maturities of the securities, requiring active management of portfolio duration.",
+          "supported": true,
+          "evidence_basis": "The Annual Report (page 36) shows a 100‑basis‑point increase in U.S. Treasury rates would impact fair value by (1,415) million dollars (~$1.4 billion). Additional text on the same page describes that securities in the fixed‑income portfolio face different interest‑rate risks based on maturities and that the company manages portfolio duration, confirming the claim."
+        }
+      ],
+      "reason": "Both factual statements in the generated answer are directly corroborated by the retrieved evidence from the Annual Report."
+    },
+    {
+      "id": "q15",
+      "question": "What is Microsoft's employee satisfaction score in India for 2025?",
+      "generated_answer": "The information is not available in the provided documents.",
+      "faithfulness_score": null,
+      "claims": [],
+      "reason": "Expected abstention evaluated separately."
+    }
+  ]
+}

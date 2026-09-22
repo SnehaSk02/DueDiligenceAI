@@ -24,3 +24,5 @@ class DueDiligenceState(TypedDict, total=False):
 
     # Error information
     error: Optional[str]
+
+    retrieved_evidence: List[Dict]

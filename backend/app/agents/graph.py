@@ -289,7 +289,7 @@ FINANCIAL SUBQUESTION:
 """
 
     retrieved_chunks = rag_service.retrieve(
-    question=state["question"],
+    question=f"What was Microsoft's net income in 2025?",
     case_id=state["case_id"],
     top_k=5
 )
@@ -776,10 +776,21 @@ The application will display the document sources separately.
             seen_sources.add(source_key)
             unique_sources.append(source)
 
+    retrieved_evidence = [
+    {
+        "agent": result.get("agent"),
+        "chunks": result.get("evidence", [])
+    }
+    for result in agent_answers
+]
+    print("\nDEBUG retrieved_evidence:")
+    print(retrieved_evidence)
+
     return {
         **state,
         "answer": final_answer,
-        "sources": unique_sources
+        "sources": unique_sources,
+        "retrieved_evidence": retrieved_evidence
     }
 
 def route_question(state: DueDiligenceState) -> list[str]:

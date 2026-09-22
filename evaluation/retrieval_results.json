@@ -1,0 +1,944 @@
+{
+  "top_k": 5,
+  "total_questions": 15,
+  "evaluated_questions": 14,
+  "skipped_questions": 1,
+  "error_questions": 0,
+  "metrics": {
+    "hit@5": 0.7857142857142857,
+    "recall@5": 0.6250000000000001,
+    "mrr@5": 0.5238095238095238
+  },
+  "results": [
+    {
+      "id": "q1",
+      "question": "What was Microsoft's revenue in fiscal year 2025?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 294
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.70778704,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.7066828,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.70122194,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.6872453,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 234,
+          "page_number": 61,
+          "content_type": "text",
+          "score": 0.6833338,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "id": "q2",
+      "question": "How did Microsoft's revenue change in fiscal year 2025 compared with fiscal year 2024?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 104
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.7184542,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 107,
+          "page_number": 26,
+          "content_type": "text",
+          "score": 0.7076122,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.7067032,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.65516585,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6499653,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 0.3333333333333333,
+      "first_relevant_rank": 3
+    },
+    {
+      "id": "q3",
+      "question": "What was Microsoft Cloud revenue in fiscal year 2025?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 295
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.7563789,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.7371013,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.7252196,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.71786004,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 107,
+          "page_number": 26,
+          "content_type": "text",
+          "score": 0.695487,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "id": "q4",
+      "question": "What was Microsoft net income in fiscal year 2025?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 104
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 234,
+          "page_number": 61,
+          "content_type": "text",
+          "score": 0.71661365,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6938711,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.68824434,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.68813044,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.68514204,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 0.25,
+      "first_relevant_rank": 4
+    },
+    {
+      "id": "q5",
+      "question": "What was Microsoft operating income in fiscal year 2025?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 104
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 234,
+          "page_number": 61,
+          "content_type": "text",
+          "score": 0.70234185,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.699401,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6941117,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.6920537,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.6855273,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 0.25,
+      "first_relevant_rank": 4
+    },
+    {
+      "id": "q6",
+      "question": "What financial market risks does Microsoft face?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 154
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 155
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 82,
+          "page_number": 20,
+          "content_type": "text",
+          "score": 0.5923467,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 121,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.5806029,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 87,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.5793096,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 86,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.5697851,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 298,
+          "page_number": 80,
+          "content_type": "text",
+          "score": 0.559566,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 0,
+      "recall_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "id": "q7",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 220
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 221
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 82,
+          "page_number": 20,
+          "content_type": "text",
+          "score": 0.6020814,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 153,
+          "page_number": 36,
+          "content_type": "text",
+          "score": 0.6001324,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 220,
+          "page_number": 57,
+          "content_type": "text",
+          "score": 0.58134204,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 172,
+          "page_number": 44,
+          "content_type": "text",
+          "score": 0.5734569,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 120,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.56903386,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 0.6666666666666666,
+      "mrr_at_k": 0.5,
+      "first_relevant_rank": 2
+    },
+    {
+      "id": "q8",
+      "question": "What interest rate risks does Microsoft face?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 155
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 121,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.6330449,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 120,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.5756996,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 87,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.5677269,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 28,
+          "page_number": 9,
+          "content_type": "text",
+          "score": 0.5632318,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.55884564,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 0,
+      "recall_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "id": "q9",
+      "question": "What are Microsoft's main business segments?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 39
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6706399,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 286,
+          "page_number": 76,
+          "content_type": "text",
+          "score": 0.6422813,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.63289267,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 98,
+          "page_number": 24,
+          "content_type": "text",
+          "score": 0.6324128,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 294,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6307464,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 0,
+      "recall_at_k": 0.0,
+      "mrr_at_k": 0.0,
+      "first_relevant_rank": null
+    },
+    {
+      "id": "q10",
+      "question": "What are Microsoft's three main operating segments, and what does each segment primarily include?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 39
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 286
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 287
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 289
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 39,
+          "page_number": 12,
+          "content_type": "text",
+          "score": 0.6375133,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 289,
+          "page_number": 77,
+          "content_type": "text",
+          "score": 0.6048883,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 286,
+          "page_number": 76,
+          "content_type": "text",
+          "score": 0.60461295,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 40,
+          "page_number": 12,
+          "content_type": "text",
+          "score": 0.6026472,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.5904205,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 0.75,
+      "mrr_at_k": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "id": "q11",
+      "question": "What are the main products and services included in Microsoft's Intelligent Cloud segment?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 287
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 48
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 287,
+          "page_number": 76,
+          "content_type": "text",
+          "score": 0.7540926,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 47,
+          "page_number": 13,
+          "content_type": "text",
+          "score": 0.66715866,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 286,
+          "page_number": 76,
+          "content_type": "text",
+          "score": 0.6363574,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 41,
+          "page_number": 12,
+          "content_type": "text",
+          "score": 0.6182607,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.6070273,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 0.5,
+      "mrr_at_k": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "id": "q12",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 220
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 82,
+          "page_number": 20,
+          "content_type": "text",
+          "score": 0.6020814,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 153,
+          "page_number": 36,
+          "content_type": "text",
+          "score": 0.6001324,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 220,
+          "page_number": 57,
+          "content_type": "text",
+          "score": 0.58134204,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 172,
+          "page_number": 44,
+          "content_type": "text",
+          "score": 0.5734569,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 120,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.56903386,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 1.0,
+      "mrr_at_k": 0.5,
+      "first_relevant_rank": 2
+    },
+    {
+      "id": "q13",
+      "question": "How did Microsoft's revenue change in fiscal year 2025, and what foreign currency risks did the company face?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 104
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.6717377,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.6649523,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 107,
+          "page_number": 26,
+          "content_type": "text",
+          "score": 0.6432944,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 155,
+          "page_number": 36,
+          "content_type": "text",
+          "score": 0.63674366,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.63112867,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 0.5,
+      "mrr_at_k": 0.5,
+      "first_relevant_rank": 2
+    },
+    {
+      "id": "q14",
+      "question": "What was Microsoft operating income in fiscal year 2025, and what interest rate risks did the company face?",
+      "status": "EVALUATED",
+      "relevant_chunks": [
+        {
+          "document_id": 13,
+          "chunk_index": 104
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 153
+        },
+        {
+          "document_id": 13,
+          "chunk_index": 155
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "rank": 1,
+          "document_id": 13,
+          "chunk_index": 104,
+          "page_number": 25,
+          "content_type": "text",
+          "score": 0.6648667,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document_id": 13,
+          "chunk_index": 88,
+          "page_number": 22,
+          "content_type": "text",
+          "score": 0.65111303,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document_id": 13,
+          "chunk_index": 295,
+          "page_number": 79,
+          "content_type": "text",
+          "score": 0.64901793,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document_id": 13,
+          "chunk_index": 234,
+          "page_number": 61,
+          "content_type": "text",
+          "score": 0.6444292,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document_id": 13,
+          "chunk_index": 121,
+          "page_number": 30,
+          "content_type": "text",
+          "score": 0.63781106,
+          "is_relevant": false
+        }
+      ],
+      "hit_at_k": 1,
+      "recall_at_k": 0.3333333333333333,
+      "mrr_at_k": 1.0,
+      "first_relevant_rank": 1
+    },
+    {
+      "id": "q15",
+      "question": "What is Microsoft's employee satisfaction score in India for 2025?",
+      "status": "NO_GROUND_TRUTH",
+      "retrieved_chunks": [],
+      "hit_at_k": null,
+      "recall_at_k": null,
+      "mrr_at_k": null,
+      "first_relevant_rank": null
+    }
+  ]
+}

@@ -1,0 +1,1204 @@
+{
+  "total_questions": 15,
+  "evaluated_questions": 15,
+  "routing_accuracy": 1.0,
+  "unanswerable_questions": 1,
+  "correct_abstentions": 1,
+  "abstention_accuracy": 1.0,
+  "results": [
+    {
+      "id": "q1",
+      "question": "What was Microsoft's revenue in fiscal year 2025?",
+      "expected_routes": [
+        "financial"
+      ],
+      "actual_routes": [
+        "financial"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's revenue was $281.724 billion in fiscal year 2025.",
+      "generated_answer": "Microsoft\u2019s revenue for fiscal year\u202f2025 was\u202f$281,724\u202fmillion (approximately\u202f$281.7\u202fbillion).",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer correctly states Microsoft's fiscal year 2025 revenue as $281,724 million, which is equivalent to $281.724\u202fbillion as given in the reference.",
+        "completeness_reason": "The answer provides the exact revenue figure requested, matching the reference answer without omitting any required information."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.70778704,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 294,
+              "text": "Revenue, classified by significant product and service offerings, was as follows:\n\u00a0\n(In millions)\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2025 \u00a0\n2024 \u00a0\n2023\n\n\n\n\nServer products and cloud services\n$\n98,435 $ 79,828 \u00a0 $ 65,007\nMicrosoft 365 Commercial products and cloud services\n\n87,767\n76,969 \u00a0\n66,949\nGaming\n\n23,455\n21,503 \u00a0\n15,466\nLinkedIn\n\n17,812\n16,372 \u00a0\n14,989\nWindows and Devices\n\n17,314\n17,026 \u00a0\n17,147\nSearch and news advertising\n\n13,878\n12,306 \u00a0\n12,125\nDynamics products and cloud services\n\n7,827\n6,831 \u00a0\n5,796\nEnterprise and partner services\n\n7,760\n7,594 \u00a0\n7,900\nMicrosoft 365 Consumer products and cloud services\n\n7,404\n6,648 \u00a0\n6,417\nOther\n\n72\n45 \u00a0\n119\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\nTotal\n$\n281,72\n4 $\n245,12\n2 \u00a0 $ 211,915"
+            },
+            {
+              "score": 0.7066828,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            },
+            {
+              "score": 0.70122194,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.6872453,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.6833338,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 61,
+              "content_type": "text",
+              "chunk_index": 234,
+              "text": "9,689 \u00a0\n4\u00a0years\nCustomer-related\n\n661 \u00a0\n4\u00a0years\n\u00a0\n\u00a0\n\nFair value of intangible assets acquired\n$ \u00a0\u2002\u2002\u200221,969 \u00a0\n15\u00a0years\n\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\nFollowing are the supplemental consolidated financial results of Microsoft Corporation on an unaudited pro forma basis,\nas if the acquisition had been consummated on July\u00a01, 2022:\n\u00a0\n(In millions, except per share amounts)\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2024 \u00a0\n2023\n\n\n\nRevenue\n\u00a0 $ \u2002\u2002247,442 \u00a0 $ \u2002\u2002219,790\nNet income\n\u00a0\n88,308 \u00a0\n71,383\nDiluted earnings per share\n\u00a0\n11.82 \u00a0\n9.55\n\u00a0\n60"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "How did Microsoft's revenue change in fiscal year 2025 compared with fiscal year 2024?",
+      "expected_routes": [
+        "financial"
+      ],
+      "actual_routes": [
+        "financial"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's revenue increased by $36.6 billion, or 15%, in fiscal year 2025 compared with fiscal year 2024.",
+      "generated_answer": "Microsoft\u2019s revenue grew by\u202f$36.6\u202fbillion in fiscal year\u202f2025 versus fiscal year\u202f2024, representing a\u202f15% increase.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer accurately states the revenue increase of $36.6\u202fbillion and the 15% growth for FY2025 versus FY2024, matching the reference.",
+        "completeness_reason": "It includes both the dollar amount and the percentage change, covering all key information requested."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.7184542,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            },
+            {
+              "score": 0.7076122,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 26,
+              "content_type": "text",
+              "chunk_index": 107,
+              "text": "Reportable Segments\nFiscal Year 2025 Compared with Fiscal Year 2024\nProductivity and Business Processes\nRevenue increased $14.0\u00a0billion or 13%.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased $10.8\u00a0billion or 14%. Microsoft 365\nCommercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and\nmedium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365\nCommercial products revenue grew 7% driven by the Windows Commercial on-premises components of\nMicrosoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased $756\u00a0million or 11%. Microsoft 365\nConsumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to\n89.0\u00a0million, as well as growth in revenue per user from the price increase announced in January 2025.\n\u2022\u200b"
+            },
+            {
+              "score": 0.7067032,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.65516585,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.6499653,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 294,
+              "text": "Revenue, classified by significant product and service offerings, was as follows:\n\u00a0\n(In millions)\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2025 \u00a0\n2024 \u00a0\n2023\n\n\n\n\nServer products and cloud services\n$\n98,435 $ 79,828 \u00a0 $ 65,007\nMicrosoft 365 Commercial products and cloud services\n\n87,767\n76,969 \u00a0\n66,949\nGaming\n\n23,455\n21,503 \u00a0\n15,466\nLinkedIn\n\n17,812\n16,372 \u00a0\n14,989\nWindows and Devices\n\n17,314\n17,026 \u00a0\n17,147\nSearch and news advertising\n\n13,878\n12,306 \u00a0\n12,125\nDynamics products and cloud services\n\n7,827\n6,831 \u00a0\n5,796\nEnterprise and partner services\n\n7,760\n7,594 \u00a0\n7,900\nMicrosoft 365 Consumer products and cloud services\n\n7,404\n6,648 \u00a0\n6,417\nOther\n\n72\n45 \u00a0\n119\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\nTotal\n$\n281,72\n4 $\n245,12\n2 \u00a0 $ 211,915"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What was Microsoft Cloud revenue in fiscal year 2025?",
+      "expected_routes": [
+        "financial"
+      ],
+      "actual_routes": [
+        "financial"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft Cloud revenue was $168.9 billion in fiscal year 2025.",
+      "generated_answer": "Microsoft Cloud revenue in fiscal year\u202f2025 was $168.9\u202fbillion.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer correctly states the Microsoft Cloud revenue as $168.9\u202fbillion for fiscal year 2025, matching the reference.",
+        "completeness_reason": "All required information (revenue amount, fiscal year) is present, fully addressing the question."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.7563789,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.7371013,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            },
+            {
+              "score": 0.7252196,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 294,
+              "text": "Revenue, classified by significant product and service offerings, was as follows:\n\u00a0\n(In millions)\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2025 \u00a0\n2024 \u00a0\n2023\n\n\n\n\nServer products and cloud services\n$\n98,435 $ 79,828 \u00a0 $ 65,007\nMicrosoft 365 Commercial products and cloud services\n\n87,767\n76,969 \u00a0\n66,949\nGaming\n\n23,455\n21,503 \u00a0\n15,466\nLinkedIn\n\n17,812\n16,372 \u00a0\n14,989\nWindows and Devices\n\n17,314\n17,026 \u00a0\n17,147\nSearch and news advertising\n\n13,878\n12,306 \u00a0\n12,125\nDynamics products and cloud services\n\n7,827\n6,831 \u00a0\n5,796\nEnterprise and partner services\n\n7,760\n7,594 \u00a0\n7,900\nMicrosoft 365 Consumer products and cloud services\n\n7,404\n6,648 \u00a0\n6,417\nOther\n\n72\n45 \u00a0\n119\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\nTotal\n$\n281,72\n4 $\n245,12\n2 \u00a0 $ 211,915"
+            },
+            {
+              "score": 0.71786004,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.695487,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 26,
+              "content_type": "text",
+              "chunk_index": 107,
+              "text": "Reportable Segments\nFiscal Year 2025 Compared with Fiscal Year 2024\nProductivity and Business Processes\nRevenue increased $14.0\u00a0billion or 13%.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased $10.8\u00a0billion or 14%. Microsoft 365\nCommercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and\nmedium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365\nCommercial products revenue grew 7% driven by the Windows Commercial on-premises components of\nMicrosoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased $756\u00a0million or 11%. Microsoft 365\nConsumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to\n89.0\u00a0million, as well as growth in revenue per user from the price increase announced in January 2025.\n\u2022\u200b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "What was Microsoft net income in fiscal year 2025?",
+      "expected_routes": [
+        "financial"
+      ],
+      "actual_routes": [
+        "financial"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's net income was $101.832 billion in fiscal year 2025.",
+      "generated_answer": "Microsoft reported net income of\u202f$101.83\u202fbillion for fiscal year\u202f2025.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer states Microsoft\u2019s net income as $101.83\u202fbillion for fiscal year 2025, which matches the reference value of $101.832\u202fbillion (rounded), so it is fully factually correct.",
+        "completeness_reason": "The answer provides the exact net income figure requested, covering all required information."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.71661365,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 61,
+              "content_type": "text",
+              "chunk_index": 234,
+              "text": "9,689 \u00a0\n4\u00a0years\nCustomer-related\n\n661 \u00a0\n4\u00a0years\n\u00a0\n\u00a0\n\nFair value of intangible assets acquired\n$ \u00a0\u2002\u2002\u200221,969 \u00a0\n15\u00a0years\n\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\nFollowing are the supplemental consolidated financial results of Microsoft Corporation on an unaudited pro forma basis,\nas if the acquisition had been consummated on July\u00a01, 2022:\n\u00a0\n(In millions, except per share amounts)\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2024 \u00a0\n2023\n\n\n\nRevenue\n\u00a0 $ \u2002\u2002247,442 \u00a0 $ \u2002\u2002219,790\nNet income\n\u00a0\n88,308 \u00a0\n71,383\nDiluted earnings per share\n\u00a0\n11.82 \u00a0\n9.55\n\u00a0\n60"
+            },
+            {
+              "score": 0.6938711,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 294,
+              "text": "Revenue, classified by significant product and service offerings, was as follows:\n\u00a0\n(In millions)\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2025 \u00a0\n2024 \u00a0\n2023\n\n\n\n\nServer products and cloud services\n$\n98,435 $ 79,828 \u00a0 $ 65,007\nMicrosoft 365 Commercial products and cloud services\n\n87,767\n76,969 \u00a0\n66,949\nGaming\n\n23,455\n21,503 \u00a0\n15,466\nLinkedIn\n\n17,812\n16,372 \u00a0\n14,989\nWindows and Devices\n\n17,314\n17,026 \u00a0\n17,147\nSearch and news advertising\n\n13,878\n12,306 \u00a0\n12,125\nDynamics products and cloud services\n\n7,827\n6,831 \u00a0\n5,796\nEnterprise and partner services\n\n7,760\n7,594 \u00a0\n7,900\nMicrosoft 365 Consumer products and cloud services\n\n7,404\n6,648 \u00a0\n6,417\nOther\n\n72\n45 \u00a0\n119\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\nTotal\n$\n281,72\n4 $\n245,12\n2 \u00a0 $ 211,915"
+            },
+            {
+              "score": 0.68824434,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.68813044,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.68514204,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "What was Microsoft operating income in fiscal year 2025?",
+      "expected_routes": [
+        "financial"
+      ],
+      "actual_routes": [
+        "financial"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's operating income was $128.528 billion in fiscal year 2025.",
+      "generated_answer": "Microsoft\u2019s operating income for fiscal year\u202f2025 was approximately\u202f$128.5\u202fbillion.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer correctly reports Microsoft's operating income for fiscal year 2025 as approximately $128.5\u202fbillion, which aligns with the reference value of $128.528\u202fbillion (rounded).",
+        "completeness_reason": "It fully answers the question by providing the required operating income figure for FY2025."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.70234185,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 61,
+              "content_type": "text",
+              "chunk_index": 234,
+              "text": "9,689 \u00a0\n4\u00a0years\nCustomer-related\n\n661 \u00a0\n4\u00a0years\n\u00a0\n\u00a0\n\nFair value of intangible assets acquired\n$ \u00a0\u2002\u2002\u200221,969 \u00a0\n15\u00a0years\n\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\nFollowing are the supplemental consolidated financial results of Microsoft Corporation on an unaudited pro forma basis,\nas if the acquisition had been consummated on July\u00a01, 2022:\n\u00a0\n(In millions, except per share amounts)\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2024 \u00a0\n2023\n\n\n\nRevenue\n\u00a0 $ \u2002\u2002247,442 \u00a0 $ \u2002\u2002219,790\nNet income\n\u00a0\n88,308 \u00a0\n71,383\nDiluted earnings per share\n\u00a0\n11.82 \u00a0\n9.55\n\u00a0\n60"
+            },
+            {
+              "score": 0.699401,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 294,
+              "text": "Revenue, classified by significant product and service offerings, was as follows:\n\u00a0\n(In millions)\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2025 \u00a0\n2024 \u00a0\n2023\n\n\n\n\nServer products and cloud services\n$\n98,435 $ 79,828 \u00a0 $ 65,007\nMicrosoft 365 Commercial products and cloud services\n\n87,767\n76,969 \u00a0\n66,949\nGaming\n\n23,455\n21,503 \u00a0\n15,466\nLinkedIn\n\n17,812\n16,372 \u00a0\n14,989\nWindows and Devices\n\n17,314\n17,026 \u00a0\n17,147\nSearch and news advertising\n\n13,878\n12,306 \u00a0\n12,125\nDynamics products and cloud services\n\n7,827\n6,831 \u00a0\n5,796\nEnterprise and partner services\n\n7,760\n7,594 \u00a0\n7,900\nMicrosoft 365 Consumer products and cloud services\n\n7,404\n6,648 \u00a0\n6,417\nOther\n\n72\n45 \u00a0\n119\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\u00a0\nTotal\n$\n281,72\n4 $\n245,12\n2 \u00a0 $ 211,915"
+            },
+            {
+              "score": 0.6941117,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.6920537,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.6855273,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "What financial market risks does Microsoft face?",
+      "expected_routes": [
+        "risk"
+      ],
+      "actual_routes": [
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft faces foreign currency, interest rate, credit, and equity price risks. Its sensitivity analysis quantifies the potential effects of changes in foreign exchange rates, U.S. Treasury interest rates, credit spreads, and equity market prices.",
+      "generated_answer": "Microsoft is exposed to four primary financial\u2011market risks:\n\n* **Foreign\u2011currency risk** \u2013 changes in exchange rates for the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar can affect assets, liabilities, revenue and earnings. A 10\u202f% decline in foreign\u2011exchange rates is projected to reduce earnings by about $11.6\u202fbillion.  \n* **Interest\u2011rate risk** \u2013 fluctuations in U.S. Treasury rates affect the fair value of its fixed\u2011income portfolio; a 100\u2011basis\u2011point rise would lower fair value by roughly $1.4\u202fbillion.  \n* **Credit\u2011spread risk** \u2013 widening credit spreads impact the fair value of credit\u2011related holdings; a 100\u2011basis\u2011point increase could reduce fair value by about $436\u202fmillion.  \n* **Equity\u2011price risk** \u2013 declines in equity market prices affect earnings; a 10\u202f% drop in equity prices is estimated to cut earnings by approximately $1.2\u202fbillion.  \n\nMicrosoft manages these exposures, in part, through derivative instruments such as foreign\u2011exchange forwards, interest\u2011rate hedges, equity\u2011price hedges and credit\u2011related derivatives.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The answer correctly identifies the four financial market risks (foreign\u2011currency, interest\u2011rate, credit\u2011spread, and equity\u2011price) that Microsoft faces, matching the reference. The additional quantitative details do not contradict the reference.",
+        "completeness_reason": "All risk categories mentioned in the reference are covered, and the answer provides extra relevant information without omitting any required points."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.6748564,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.63487816,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 172,
+              "text": "estimates and assumptions due to risks and uncertainties.\nForeign Currencies\nAssets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance sheet date.\nRevenue and expenses are translated at average rates of exchange prevailing during the year. Translation adjustments\nresulting from this process are recorded to other comprehensive income.\nRevenue\nProduct Revenue and Service and Other Revenue\nProduct revenue includes sales from operating systems, cross-device productivity and collaboration applications, server\napplications, business solution applications, desktop and server management tools, software development tools, video\ngames, and hardware such as PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related\naccessories.\n43"
+            },
+            {
+              "score": 0.6215551,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.62024385,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 20,
+              "content_type": "text",
+              "chunk_index": 82,
+              "text": "safeguards so that our operations, products, and services meet applicable legal standards. Our business teams, with legal\nsupport, manage the compliance programs and prepare external regulatory and commercial reporting, and our internal\naudit teams conduct reviews of the programs and processes.\u00a0While we have a unified approach to regulatory compliance,\nsome of the programs and processes are tailored to meet specific regulatory obligations, such as with the creation of\nindependent compliance functions required by the European Union (\u201cEU\u201d) Digital Markets Act and the EU Digital Services\nAct, which oversee, monitor, and assess the company\u2019s compliance with these acts.\nFor a description of the risks we face related to regulatory matters, refer to Risk Factors in our fiscal year 2025 Form\u00a010K.\nAVAILABLE INFORMATION\nOur Internet address is www.microsoft.com. At our Investor Relations website, www.microsoft.com/investor, we make"
+            },
+            {
+              "score": 0.61737907,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 57,
+              "content_type": "text",
+              "chunk_index": 220,
+              "text": "NOTE 5 \u2014 DERIVATIVES\nWe use derivative instruments to manage risks related to foreign currencies, interest rates, equity prices, and credit; to\nenhance investment returns; and to facilitate portfolio diversification. Our objectives for holding derivatives include\nreducing, eliminating, and efficiently managing the economic impact of these exposures as effectively as possible. Our\nderivative programs include strategies that both qualify and do not qualify for hedge accounting treatment.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency hedge positions.\nForeign currency risks related to certain Euro-denominated debt are hedged using foreign exchange forward contracts\nthat are designated as cash flow hedging instruments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "expected_routes": [
+        "risk"
+      ],
+      "actual_routes": [
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft monitors its foreign currency exposures daily and uses derivative instruments, including foreign exchange forward contracts and options, to manage foreign currency exposures and hedge certain Euro-denominated debt.",
+      "generated_answer": "Microsoft manages foreign\u2011currency risk by actively monitoring its currency exposures each day and using derivative instruments to hedge those exposures. It employs foreign\u2011exchange forward contracts\u2014particularly to hedge Euro\u2011denominated debt\u2014as cash\u2011flow hedging instruments, and maintains both hedge\u2011qualified and non\u2011qualified derivative programs to reduce or eliminate the economic impact of currency fluctuations. Assets and liabilities in foreign currencies are translated at the balance\u2011sheet date rate, while revenue and expenses are translated at average rates for the period; any resulting translation adjustments are recorded in other comprehensive income.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 0.5,
+        "correctness_reason": "The answer accurately states that Microsoft monitors currency exposures daily and uses derivative instruments, specifically forward contracts, to hedge Euro\u2011denominated debt. No factual errors or contradictions are present.",
+        "completeness_reason": "While the answer covers daily monitoring and forward contracts, it omits the reference's mention of options as part of the derivative instruments used, thus missing an important detail."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.704012,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.6691259,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 172,
+              "text": "estimates and assumptions due to risks and uncertainties.\nForeign Currencies\nAssets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance sheet date.\nRevenue and expenses are translated at average rates of exchange prevailing during the year. Translation adjustments\nresulting from this process are recorded to other comprehensive income.\nRevenue\nProduct Revenue and Service and Other Revenue\nProduct revenue includes sales from operating systems, cross-device productivity and collaboration applications, server\napplications, business solution applications, desktop and server management tools, software development tools, video\ngames, and hardware such as PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related\naccessories.\n43"
+            },
+            {
+              "score": 0.6607717,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 57,
+              "content_type": "text",
+              "chunk_index": 220,
+              "text": "NOTE 5 \u2014 DERIVATIVES\nWe use derivative instruments to manage risks related to foreign currencies, interest rates, equity prices, and credit; to\nenhance investment returns; and to facilitate portfolio diversification. Our objectives for holding derivatives include\nreducing, eliminating, and efficiently managing the economic impact of these exposures as effectively as possible. Our\nderivative programs include strategies that both qualify and do not qualify for hedge accounting treatment.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency hedge positions.\nForeign currency risks related to certain Euro-denominated debt are hedged using foreign exchange forward contracts\nthat are designated as cash flow hedging instruments."
+            },
+            {
+              "score": 0.6468499,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.63547283,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 171,
+              "text": "recognition, determining the nature and timing of satisfaction of performance obligations, and determining the standalone\nselling price (\u201cSSP\u201d) of performance obligations, variable consideration, and other obligations such as product returns and\nrefunds; loss contingencies; the fair value of and/or potential impairment of goodwill and intangible assets for our reporting\nunits; product life cycles; useful lives of our tangible and intangible assets; allowances for doubtful accounts; stock-based\ncompensation forfeiture rates; when technological feasibility is achieved for our products; the potential outcome of\nuncertain tax positions that have been recognized in our consolidated financial statements or tax returns; and determining\nthe timing and amount of impairments for investments. Actual results and outcomes may differ from management\u2019s\nestimates and assumptions due to risks and uncertainties.\nForeign Currencies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "What interest rate risks does Microsoft face?",
+      "expected_routes": [
+        "risk"
+      ],
+      "actual_routes": [
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft faces interest-rate risk related to its fixed-income securities. Its sensitivity analysis indicates that a 100-basis-point increase in U.S. Treasury interest rates would reduce fair value by approximately $1.415 billion.",
+      "generated_answer": "Microsoft\u2019s interest\u2011rate risk stems from the securities it holds in its fixed\u2011income portfolio. Because the portfolio\u2019s holdings have varying maturities, changes in interest rates affect their fair value. In its risk sensitivity analysis, a hypothetical 100\u2011basis\u2011point increase in U.S. Treasury rates would reduce the fair value of the portfolio by about $1,415.",
+      "answer_quality": {
+        "correctness_score": 0.0,
+        "completeness_score": 0.0,
+        "correctness_reason": "The generated answer states the fair\u2011value impact as \"about $1,415\" without the correct magnitude of $1.415\u202fbillion, which is a material factual error.",
+        "completeness_reason": "While it mentions the fixed\u2011income portfolio and the 100\u2011basis\u2011point sensitivity, it omits the crucial quantitative detail of the impact being approximately $1.415\u202fbillion, thus missing an important part of the answer."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.6715772,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.6356598,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 172,
+              "text": "estimates and assumptions due to risks and uncertainties.\nForeign Currencies\nAssets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance sheet date.\nRevenue and expenses are translated at average rates of exchange prevailing during the year. Translation adjustments\nresulting from this process are recorded to other comprehensive income.\nRevenue\nProduct Revenue and Service and Other Revenue\nProduct revenue includes sales from operating systems, cross-device productivity and collaboration applications, server\napplications, business solution applications, desktop and server management tools, software development tools, video\ngames, and hardware such as PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related\naccessories.\n43"
+            },
+            {
+              "score": 0.6307626,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.6113962,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 57,
+              "content_type": "text",
+              "chunk_index": 220,
+              "text": "NOTE 5 \u2014 DERIVATIVES\nWe use derivative instruments to manage risks related to foreign currencies, interest rates, equity prices, and credit; to\nenhance investment returns; and to facilitate portfolio diversification. Our objectives for holding derivatives include\nreducing, eliminating, and efficiently managing the economic impact of these exposures as effectively as possible. Our\nderivative programs include strategies that both qualify and do not qualify for hedge accounting treatment.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency hedge positions.\nForeign currency risks related to certain Euro-denominated debt are hedged using foreign exchange forward contracts\nthat are designated as cash flow hedging instruments."
+            },
+            {
+              "score": 0.61126477,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 171,
+              "text": "recognition, determining the nature and timing of satisfaction of performance obligations, and determining the standalone\nselling price (\u201cSSP\u201d) of performance obligations, variable consideration, and other obligations such as product returns and\nrefunds; loss contingencies; the fair value of and/or potential impairment of goodwill and intangible assets for our reporting\nunits; product life cycles; useful lives of our tangible and intangible assets; allowances for doubtful accounts; stock-based\ncompensation forfeiture rates; when technological feasibility is achieved for our products; the potential outcome of\nuncertain tax positions that have been recognized in our consolidated financial statements or tax returns; and determining\nthe timing and amount of impairments for investments. Actual results and outcomes may differ from management\u2019s\nestimates and assumptions due to risks and uncertainties.\nForeign Currencies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "What are Microsoft's main business segments?",
+      "expected_routes": [
+        "general"
+      ],
+      "actual_routes": [
+        "general"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft reports its business using three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing.",
+      "generated_answer": "Microsoft\u2019s business is organized into three primary operating segments:\u202fProductivity and Business Processes,\u202fIntelligent Cloud, and\u202fMore Personal Computing.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer accurately lists the three Microsoft business segments exactly as stated in the reference, with no factual errors.",
+        "completeness_reason": "All three required segments are included, covering the complete information requested."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "general",
+          "chunks": [
+            {
+              "score": 0.65391135,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 12,
+              "content_type": "text",
+              "chunk_index": 40,
+              "text": "decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects\nthese segment changes.\nAdditional information on our operating segments and geographic and product information is contained in Note 18 \u2013\nSegment Information and Geographic Data of the Notes to Financial Statements.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365"
+            },
+            {
+              "score": 0.6461466,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 76,
+              "content_type": "text",
+              "chunk_index": 286,
+              "text": "to Note 1 \u2013 Accounting Policies for further information.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365\nSecurity and Compliance, and Microsoft 365 Copilot; and Microsoft 365 Commercial products, comprising\nWindows Commercial on-premises and Office licensed on-premises.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office\nlicensed on-premises, and other consumer services.\n\u2022\u200b"
+            },
+            {
+              "score": 0.62562025,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 12,
+              "content_type": "text",
+              "chunk_index": 39,
+              "text": "OPERATING SEGMENTS\nWe operate our business and report our financial performance using three segments: Productivity and Business\nProcesses, Intelligent Cloud, and More Personal Computing. Our segments provide management with a comprehensive\nfinancial view of our key businesses. The segments enable the alignment of strategies and objectives across the\ndevelopment, sales, marketing, and services organizations, and they provide a framework for timely and rational\nallocation of resources within businesses.\nIn August 2024, we announced changes to the composition of our segments. These changes align our segments with how\nwe currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the\nProductivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating\ndecision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects\nthese segment changes."
+            },
+            {
+              "score": 0.6225529,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 77,
+              "content_type": "text",
+              "chunk_index": 289,
+              "text": "More Personal Computing\nOur More Personal Computing segment consists of products and services that put customers at the center of the\nexperience with our technology. This segment primarily comprises:\n\u2022\u200b\nWindows and Devices, including Windows OEM licensing (Windows Pro and non-Pro licenses sold through\nthe OEM channel) and Devices, comprising Surface and PC accessories.\n\u2022\u200b\nGaming, including Xbox hardware and Xbox content and services, comprising first- and third-party content\n(including games and in-game content), Xbox Game Pass and other subscriptions, Xbox Cloud Gaming,\nadvertising, and other cloud services.\n\u2022\u200b\nSearch and news advertising, comprising Bing and Copilot, Microsoft News, Microsoft Edge, and third-party\naffiliates.\nRevenue and costs are generally directly attributed to our segments. However, due to the integrated structure of our\nbusiness, certain revenue recognized and costs incurred by one segment may benefit other segments. Revenue from"
+            },
+            {
+              "score": 0.6183692,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 86,
+              "content_type": "text",
+              "chunk_index": 325,
+              "text": "our stakeholders and to and maintain their trust, we are\ncommitted to conducting our business in ways that are\nprincipled, transparent, and accountable. From our CEO\nand Senior Leadership Team and throughout our\norganization, people at Microsoft are working to conduct\nour business in principled ways that make a significant\npositive impact on important global issues. Microsoft\u2019s\nBoard of Directors provides insight, feedback, and\noversight across a broad range of environmental and\nsocial matters. In particular, among the responsibilities of\nthe Board\u2019s Environmental, Social, and Public Policy\nCommittee is to review and provide guidance to the Board\nand management about the Company\u2019s policies and\nprograms that relate to corporate social responsibility.\nFor more about Microsoft\u2019s CSR commitments and\nperformance, please visit:\nwww.microsoft.com/transparency."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "What are Microsoft's three main operating segments, and what does each segment primarily include?",
+      "expected_routes": [
+        "general"
+      ],
+      "actual_routes": [
+        "general"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft reports three main operating segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. Productivity and Business Processes primarily includes Microsoft 365 Commercial and Consumer products and cloud services, LinkedIn, and Dynamics products and cloud services. Intelligent Cloud primarily includes server products and cloud services such as Azure and other cloud services, as well as server products such as SQL Server, Windows Server, Visual Studio, and System Center. More Personal Computing primarily includes Windows and Devices, Gaming, and Search and news advertising.",
+      "generated_answer": "Microsoft reports its business in three operating segments:\n\n1. **Productivity and Business Processes** \u2013 This segment primarily comprises Microsoft\u202f365 products and cloud services. It includes the commercial side (Microsoft\u202f365 Commercial cloud, Enterprise Mobility\u202f+\u202fSecurity, the cloud portion of Windows Commercial, the per\u2011user portion of Power\u202fBI, Exchange, SharePoint, Microsoft\u202fTeams, Microsoft\u202f365 Security and Compliance, Microsoft\u202f365 Copilot, as well as on\u2011premises Windows Commercial and Office) and the consumer side (Microsoft\u202f365 Consumer subscriptions, Office licensed on\u2011premises, and other consumer services).\n\n2. **Intelligent Cloud** \u2013 The provided documents do not specify the products or services that are primarily included in this segment.\n\n3. **More Personal Computing** \u2013 This segment primarily comprises:\n   * **Windows and Devices** \u2013 Windows OEM licensing (Windows\u202fPro and non\u2011Pro licenses sold through OEM channels) and devices such as Surface and PC accessories.  \n   * **Gaming** \u2013 Xbox hardware and Xbox content and services, including first\u2011 and third\u2011party games, Xbox Game\u202fPass, Xbox Cloud Gaming, advertising, and other cloud services.  \n   * **Search and news advertising** \u2013 Bing and Copilot, Microsoft\u202fNews, Microsoft\u202fEdge, and third\u2011party affiliates.",
+      "answer_quality": {
+        "correctness_score": 0.0,
+        "completeness_score": 0.0,
+        "correctness_reason": "The answer incorrectly states that the Intelligent Cloud segment's components are unspecified, contradicting the reference which lists Azure, SQL Server, Windows Server, Visual Studio, etc. This factual error makes the answer materially incorrect.",
+        "completeness_reason": "The answer omits key components for two segments: it leaves out LinkedIn and Dynamics from Productivity and Business Processes, and provides no details for Intelligent Cloud. Consequently, it fails to cover all important information requested."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "general",
+          "chunks": [
+            {
+              "score": 0.6573181,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 12,
+              "content_type": "text",
+              "chunk_index": 39,
+              "text": "OPERATING SEGMENTS\nWe operate our business and report our financial performance using three segments: Productivity and Business\nProcesses, Intelligent Cloud, and More Personal Computing. Our segments provide management with a comprehensive\nfinancial view of our key businesses. The segments enable the alignment of strategies and objectives across the\ndevelopment, sales, marketing, and services organizations, and they provide a framework for timely and rational\nallocation of resources within businesses.\nIn August 2024, we announced changes to the composition of our segments. These changes align our segments with how\nwe currently manage our business, most notably bringing the commercial components of Microsoft 365 together in the\nProductivity and Business Processes segment. Beginning in fiscal year 2025, the information that our chief operating\ndecision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects\nthese segment changes."
+            },
+            {
+              "score": 0.6488542,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 12,
+              "content_type": "text",
+              "chunk_index": 40,
+              "text": "decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects\nthese segment changes.\nAdditional information on our operating segments and geographic and product information is contained in Note 18 \u2013\nSegment Information and Geographic Data of the Notes to Financial Statements.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365"
+            },
+            {
+              "score": 0.63627744,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 77,
+              "content_type": "text",
+              "chunk_index": 289,
+              "text": "More Personal Computing\nOur More Personal Computing segment consists of products and services that put customers at the center of the\nexperience with our technology. This segment primarily comprises:\n\u2022\u200b\nWindows and Devices, including Windows OEM licensing (Windows Pro and non-Pro licenses sold through\nthe OEM channel) and Devices, comprising Surface and PC accessories.\n\u2022\u200b\nGaming, including Xbox hardware and Xbox content and services, comprising first- and third-party content\n(including games and in-game content), Xbox Game Pass and other subscriptions, Xbox Cloud Gaming,\nadvertising, and other cloud services.\n\u2022\u200b\nSearch and news advertising, comprising Bing and Copilot, Microsoft News, Microsoft Edge, and third-party\naffiliates.\nRevenue and costs are generally directly attributed to our segments. However, due to the integrated structure of our\nbusiness, certain revenue recognized and costs incurred by one segment may benefit other segments. Revenue from"
+            },
+            {
+              "score": 0.63625497,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 76,
+              "content_type": "text",
+              "chunk_index": 286,
+              "text": "to Note 1 \u2013 Accounting Policies for further information.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365\nSecurity and Compliance, and Microsoft 365 Copilot; and Microsoft 365 Commercial products, comprising\nWindows Commercial on-premises and Office licensed on-premises.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office\nlicensed on-premises, and other consumer services.\n\u2022\u200b"
+            },
+            {
+              "score": 0.6146971,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 18,
+              "content_type": "text",
+              "chunk_index": 74,
+              "text": "vertical solutions and specialized services.\nOEMs\nWe distribute our products and services through OEMs that pre-install our software on new devices and servers they sell.\nThe largest component of the OEM business is the Windows operating system pre-installed on devices. OEMs also sell\ndevices pre-installed with other Microsoft products and services, including applications such as Office and the capability to\nsubscribe to Microsoft 365 Consumer.\nThere are two broad categories of OEMs.\u00a0The largest category of OEMs are direct OEMs as our relationship with them is\nmanaged through a direct agreement between Microsoft and the OEM. We have distribution agreements covering one or\nmore of our products with virtually all the multinational OEMs, including Dell, Hewlett-Packard, Lenovo, and with many\nregional and local OEMs.\u00a0The second broad category of OEMs are system builders consisting of lower-volume PC"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q11",
+      "question": "What are the main products and services included in Microsoft's Intelligent Cloud segment?",
+      "expected_routes": [
+        "general"
+      ],
+      "actual_routes": [
+        "general"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's Intelligent Cloud segment primarily includes server products and cloud services such as Azure and other cloud services, cloud and AI consumption-based services, GitHub cloud services, Nuance Healthcare cloud services, virtual desktop offerings, SQL Server, Windows Server, Visual Studio, and System Center. It also includes enterprise and partner services such as Enterprise Support Services, Industry Solutions, Nuance professional services, Microsoft Partner Network, and Learning Experience.",
+      "generated_answer": "Microsoft\u2019s Intelligent\u202fCloud segment is built around three groups of offerings:\n\n* **Server products and cloud services** \u2013 Azure and other cloud services that provide consumption\u2011based cloud and AI capabilities, GitHub cloud services, Nuage Healthcare cloud services, virtual\u2011desktop offerings, and additional cloud services; plus on\u2011premises and hybrid server products such as SQL\u202fServer, Windows\u202fServer, Visual\u202fStudio, System\u202fCenter, related Client Access Licenses and other on\u2011premises solutions.  \n\n* **Enterprise and partner services** \u2013 Enterprise Support Services, Industry Solutions, Nuance professional services, the Microsoft Partner Network and Learning Experience offerings.  \n\nThese components together constitute the core of Microsoft\u2019s Intelligent\u202fCloud segment.",
+      "answer_quality": {
+        "correctness_score": 0.5,
+        "completeness_score": 1.0,
+        "correctness_reason": "The answer accurately lists the main products and services, but contains a minor factual error by misspelling 'Nuance Healthcare' as 'Nuage Healthcare'.",
+        "completeness_reason": "All key items from the reference answer are included, covering server products, cloud services, and enterprise/partner services."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "general",
+          "chunks": [
+            {
+              "score": 0.7287152,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 76,
+              "content_type": "text",
+              "chunk_index": 287,
+              "text": "licensed on-premises, and other consumer services.\n\u2022\u200b\nLinkedIn, including Talent Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions.\n\u2022\u200b\nDynamics products and cloud services, including Dynamics 365, comprising a set of intelligent, cloud-based\napplications across ERP, CRM, Power Apps, and Power Automate; and on-premises ERP and CRM\napplications.\nIntelligent Cloud\nOur Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that power\nmodern business and developers. This segment primarily comprises:\n\u2022\u200b\nServer products and cloud services, including Azure and other cloud services, comprising cloud and AI\nconsumption-based services, GitHub cloud services, Nuance Healthcare cloud services, virtual desktop\nofferings, and other cloud services; and Server products, comprising SQL Server, Windows Server, Visual\nStudio, System Center, related Client Access Licenses (\u201cCALs\u201d), and other on-premises offerings.\n\u2022\u200b"
+            },
+            {
+              "score": 0.6851613,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 76,
+              "content_type": "text",
+              "chunk_index": 286,
+              "text": "to Note 1 \u2013 Accounting Policies for further information.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365\nSecurity and Compliance, and Microsoft 365 Copilot; and Microsoft 365 Commercial products, comprising\nWindows Commercial on-premises and Office licensed on-premises.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services, including Microsoft 365 Consumer subscriptions, Office\nlicensed on-premises, and other consumer services.\n\u2022\u200b"
+            },
+            {
+              "score": 0.6753161,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 13,
+              "content_type": "text",
+              "chunk_index": 47,
+              "text": "LinkedIn faces competition from online professional networks; recruiting, talent management, and human resource\nservices companies; job boards; companies that provide learning and development products and services; online and\noffline outlets that generate revenue from advertisers and marketers; and online and offline outlets for companies with\nlead generation and customer intelligence and insights.\nDynamics competes with cloud-based and on-premises business solution providers.\nIntelligent Cloud\nOur Intelligent Cloud segment consists of our public, private, and hybrid server products and cloud services that power\nmodern business and developers. This segment primarily comprises:\n\u2022\u200b\nServer products and cloud services, including Azure and other cloud services, comprising cloud and AI\nconsumption-based services, GitHub cloud services, Nuance Healthcare cloud services, virtual desktop\nofferings, and other cloud services; and Server products, comprising SQL Server, Windows Server, Visual"
+            },
+            {
+              "score": 0.6713437,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 12,
+              "content_type": "text",
+              "chunk_index": 40,
+              "text": "decision maker is regularly provided and reviews for purposes of allocating resources and assessing performance reflects\nthese segment changes.\nAdditional information on our operating segments and geographic and product information is contained in Note 18 \u2013\nSegment Information and Geographic Data of the Notes to Financial Statements.\nOur reportable segments are described below.\nProductivity and Business Processes\nOur Productivity and Business Processes segment consists of products and services in our portfolio of productivity,\ncommunication, and information services, spanning a variety of devices and platforms. This segment primarily comprises:\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services, including Microsoft 365 Commercial cloud,\ncomprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows\nCommercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365"
+            },
+            {
+              "score": 0.66294146,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 13,
+              "content_type": "text",
+              "chunk_index": 48,
+              "text": "offerings, and other cloud services; and Server products, comprising SQL Server, Windows Server, Visual\nStudio, System Center, related Client Access Licenses (\u201cCALs\u201d), and other on-premises offerings.\n\u2022\u200b\nEnterprise and partner services, including Enterprise Support Services, Industry Solutions, Nuance\nprofessional services, Microsoft Partner Network, and Learning Experience.\nServer Products and Cloud Services\nAzure is a comprehensive set of cloud services that offer developers, IT professionals, and enterprises freedom to build,\ndeploy, and manage applications on any platform or device. Customers can use Azure through our global network of\ndatacenters for computing, networking, storage, mobile and web application services, AI, Internet of Things, cognitive\n12"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q12",
+      "question": "How does Microsoft manage its foreign currency risk?",
+      "expected_routes": [
+        "risk"
+      ],
+      "actual_routes": [
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft monitors its foreign currency exposures daily to manage the economic effectiveness of its foreign currency positions, including hedges. It also uses derivative instruments, including foreign exchange forward contracts, to manage foreign currency exposures and hedge certain Euro-denominated debt.",
+      "generated_answer": "Microsoft manages its foreign\u2011currency risk by actively monitoring its currency exposures each day and using derivative instruments to hedge those exposures.  The company employs foreign\u2011exchange forward contracts\u2014designated as cash\u2011flow hedges\u2014to offset the risk on forecasted transactions, assets, liabilities and, in particular, Euro\u2011denominated debt.  Its derivative program includes both hedge\u2011accounting\u2011qualified and non\u2011qualified strategies aimed at reducing, eliminating, or efficiently managing the economic impact of currency fluctuations.  Assets and liabilities recorded in foreign currencies are translated at the balance\u2011sheet date rate, while revenue and expenses are translated at average rates for the period; any resulting translation adjustments are recorded in other comprehensive income.  Principal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar and Australian dollar.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The answer accurately states that Microsoft monitors foreign currency exposures daily and uses derivative instruments, specifically foreign\u2011exchange forward contracts, to hedge exposures and Euro\u2011denominated debt. No factual errors or contradictions are present.",
+        "completeness_reason": "The answer includes all points from the reference (daily monitoring, use of derivatives, forward contracts, hedging Euro debt) and adds extra relevant details without omitting any required information."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.704012,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.6691259,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 172,
+              "text": "estimates and assumptions due to risks and uncertainties.\nForeign Currencies\nAssets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance sheet date.\nRevenue and expenses are translated at average rates of exchange prevailing during the year. Translation adjustments\nresulting from this process are recorded to other comprehensive income.\nRevenue\nProduct Revenue and Service and Other Revenue\nProduct revenue includes sales from operating systems, cross-device productivity and collaboration applications, server\napplications, business solution applications, desktop and server management tools, software development tools, video\ngames, and hardware such as PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related\naccessories.\n43"
+            },
+            {
+              "score": 0.6607717,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 57,
+              "content_type": "text",
+              "chunk_index": 220,
+              "text": "NOTE 5 \u2014 DERIVATIVES\nWe use derivative instruments to manage risks related to foreign currencies, interest rates, equity prices, and credit; to\nenhance investment returns; and to facilitate portfolio diversification. Our objectives for holding derivatives include\nreducing, eliminating, and efficiently managing the economic impact of these exposures as effectively as possible. Our\nderivative programs include strategies that both qualify and do not qualify for hedge accounting treatment.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency hedge positions.\nForeign currency risks related to certain Euro-denominated debt are hedged using foreign exchange forward contracts\nthat are designated as cash flow hedging instruments."
+            },
+            {
+              "score": 0.6468499,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.63547283,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 171,
+              "text": "recognition, determining the nature and timing of satisfaction of performance obligations, and determining the standalone\nselling price (\u201cSSP\u201d) of performance obligations, variable consideration, and other obligations such as product returns and\nrefunds; loss contingencies; the fair value of and/or potential impairment of goodwill and intangible assets for our reporting\nunits; product life cycles; useful lives of our tangible and intangible assets; allowances for doubtful accounts; stock-based\ncompensation forfeiture rates; when technological feasibility is achieved for our products; the potential outcome of\nuncertain tax positions that have been recognized in our consolidated financial statements or tax returns; and determining\nthe timing and amount of impairments for investments. Actual results and outcomes may differ from management\u2019s\nestimates and assumptions due to risks and uncertainties.\nForeign Currencies"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q13",
+      "question": "How did Microsoft's revenue change in fiscal year 2025, and what foreign currency risks did the company face?",
+      "expected_routes": [
+        "financial",
+        "risk"
+      ],
+      "actual_routes": [
+        "financial",
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's revenue increased by $36.6 billion, or 15%, in fiscal year 2025 compared with fiscal year 2024. The company faced foreign currency risk from its foreign currency exposures and monitored those exposures daily, including hedges.",
+      "generated_answer": "Microsoft\u2019s revenue grew by $36.6\u202fbillion in fiscal\u202f2025, representing a 15\u202f% increase over fiscal\u202f2024.  \n\nThe company disclosed foreign\u2011currency risk that a 10\u202f% decline in foreign\u2011exchange rates would cut revenue\u2011related earnings by roughly $11.6\u202fbillion. Its exposures arise from forecasted transactions, assets and liabilities denominated in major currencies\u2014including the euro, Japanese yen, British pound, Canadian dollar and Australian dollar. Microsoft monitors these exposures daily and uses derivative instruments such as foreign\u2011exchange forward contracts to hedge the associated risks.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The answer correctly states that Microsoft\u2019s revenue grew by $36.6\u202fbillion, a 15% increase, matching the reference. It also accurately describes foreign\u2011currency risk exposure, daily monitoring, and hedging, which aligns with the reference. No factual errors or contradictions are present.",
+        "completeness_reason": "All required information is provided: the revenue change and the nature of foreign\u2011currency risk (exposures, monitoring, hedging). The answer even adds extra relevant details without omitting any core points."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.6717377,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            },
+            {
+              "score": 0.6649523,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.6432944,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 26,
+              "content_type": "text",
+              "chunk_index": 107,
+              "text": "Reportable Segments\nFiscal Year 2025 Compared with Fiscal Year 2024\nProductivity and Business Processes\nRevenue increased $14.0\u00a0billion or 13%.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased $10.8\u00a0billion or 14%. Microsoft 365\nCommercial cloud revenue grew 15% with Microsoft 365 Commercial seat growth of 6% driven by small and\nmedium businesses and frontline worker offerings, as well as growth in revenue per user. Microsoft 365\nCommercial products revenue grew 7% driven by the Windows Commercial on-premises components of\nMicrosoft 365 suite sales and an increase in Office transactional purchasing with the launch of Office 2024.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased $756\u00a0million or 11%. Microsoft 365\nConsumer cloud revenue grew 11% driven by Microsoft 365 Consumer subscriber growth of 8% to\n89.0\u00a0million, as well as growth in revenue per user from the price increase announced in January 2025.\n\u2022\u200b"
+            },
+            {
+              "score": 0.63674366,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.63112867,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            }
+          ]
+        },
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.7029166,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.6939152,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.6842546,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 44,
+              "content_type": "text",
+              "chunk_index": 172,
+              "text": "estimates and assumptions due to risks and uncertainties.\nForeign Currencies\nAssets and liabilities recorded in foreign currencies are translated at the exchange rate on the balance sheet date.\nRevenue and expenses are translated at average rates of exchange prevailing during the year. Translation adjustments\nresulting from this process are recorded to other comprehensive income.\nRevenue\nProduct Revenue and Service and Other Revenue\nProduct revenue includes sales from operating systems, cross-device productivity and collaboration applications, server\napplications, business solution applications, desktop and server management tools, software development tools, video\ngames, and hardware such as PCs, tablets, gaming and entertainment consoles, other intelligent devices, and related\naccessories.\n43"
+            },
+            {
+              "score": 0.6764382,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 23,
+              "content_type": "text",
+              "chunk_index": 94,
+              "text": "a material impact on reported revenue and expenses from our international operations in fiscal year 2025.\nFurther, global, regional, and local economic developments and changes in global trade policies such as restrictions on\ninternational trade, including tariffs and other controls on imports or exports, could result in increased supply chain\nchallenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations.\nRefer to Risk Factors in our fiscal year 2025 Form 10-K for a discussion of these factors and other risks.\nSeasonality\nOur revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is\ndriven by a higher volume of multi-year contracts executed during the period.\nReportable Segments\nWe report our financial performance based on the following segments: Productivity and Business Processes, Intelligent"
+            },
+            {
+              "score": 0.6362394,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 57,
+              "content_type": "text",
+              "chunk_index": 220,
+              "text": "NOTE 5 \u2014 DERIVATIVES\nWe use derivative instruments to manage risks related to foreign currencies, interest rates, equity prices, and credit; to\nenhance investment returns; and to facilitate portfolio diversification. Our objectives for holding derivatives include\nreducing, eliminating, and efficiently managing the economic impact of these exposures as effectively as possible. Our\nderivative programs include strategies that both qualify and do not qualify for hedge accounting treatment.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency hedge positions.\nForeign currency risks related to certain Euro-denominated debt are hedged using foreign exchange forward contracts\nthat are designated as cash flow hedging instruments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q14",
+      "question": "What was Microsoft operating income in fiscal year 2025, and what interest rate risks did the company face?",
+      "expected_routes": [
+        "financial",
+        "risk"
+      ],
+      "actual_routes": [
+        "financial",
+        "risk"
+      ],
+      "routing_correct": true,
+      "reference_answer": "Microsoft's operating income was $128.528 billion in fiscal year 2025. The company faced interest-rate risk related to its fixed-income securities; its sensitivity analysis indicated that a 100-basis-point increase in U.S. Treasury interest rates would reduce fair value by approximately $1.415 billion.",
+      "generated_answer": "Microsoft reported operating income of\u202f$128.5\u202fbillion for fiscal year\u202f2025.  \n\nThe company is exposed to interest\u2011rate risk on its fixed\u2011income portfolio: a hypothetical 100\u2011basis\u2011point increase in U.S. Treasury rates would reduce the fair value of those holdings by roughly $1.4\u202fbillion, and the risk varies with the maturities of the securities, requiring active management of portfolio duration.",
+      "answer_quality": {
+        "correctness_score": 1.0,
+        "completeness_score": 1.0,
+        "correctness_reason": "The generated answer correctly states Microsoft's operating income as $128.5\u202fbillion (a rounding of $128.528\u202fbillion) and accurately describes the interest\u2011rate risk impact as roughly $1.4\u202fbillion for a 100\u2011basis\u2011point rise, matching the reference values.",
+        "completeness_reason": "It provides both requested pieces of information: the operating income for FY\u202f2025 and the quantified interest\u2011rate risk exposure, covering all essential details from the reference answer."
+      },
+      "abstention_expected": false,
+      "abstention_detected": false,
+      "retrieved_evidence": [
+        {
+          "agent": "financial",
+          "chunks": [
+            {
+              "score": 0.6648667,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 25,
+              "content_type": "text",
+              "chunk_index": 104,
+              "text": "13%\nOperating income\n\u00a0\n128,52\n8 \u00a0\n109,43\n3 \u00a0\n\n17%\nNet income\n\u00a0\n101,83\n2 \u00a0\n88,136 \u00a0\n\n16%\nDiluted earnings per share\n\u00a0\n13.64 \u00a0\n11.80 \u00a0\n\n16%\n\u00a0\nFiscal Year 2025 Compared with Fiscal Year 2024\nRevenue increased $36.6\u00a0billion or 15% with growth across each of our segments. Intelligent Cloud revenue increased\ndriven by Azure. Productivity and Business Processes revenue increased driven by Microsoft 365 Commercial cloud.\nMore Personal Computing revenue increased driven by Gaming and Search and news advertising.\nCost of revenue increased $13.7\u00a0billion or 19% driven by growth in Microsoft Cloud.\nGross margin increased $22.9\u00a0billion or 13% with growth across each of our segments.\n\u2022\u200b\nGross margin percentage decreased slightly driven by Intelligent Cloud, offset in part by More Personal\nComputing.\n\u2022\u200b\nMicrosoft Cloud gross margin percentage decreased to 69% driven by the impact of scaling our AI\ninfrastructure, offset in part by efficiency gains in Azure.\n24"
+            },
+            {
+              "score": 0.65111303,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            },
+            {
+              "score": 0.64901793,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 79,
+              "content_type": "text",
+              "chunk_index": 295,
+              "text": "Our Microsoft Cloud revenue, which includes Microsoft 365 Commercial cloud, Azure and other cloud services, the\ncommercial portion of LinkedIn, and Dynamics 365, was $168.9\u00a0billion, $137.7\u00a0billion, and $111.6\u00a0billion in fiscal years\n2025, 2024, and 2023, respectively. These amounts are included in Microsoft 365 Commercial products and cloud\nservices, Server products and cloud services, LinkedIn, and Dynamics products and cloud services in the table above.\nAssets are not allocated to segments for internal reporting presentations. A portion of amortization and depreciation is\nincluded with various other costs in an overhead allocation to each segment. It is impracticable for us to separately\nidentify the amount of amortization and depreciation by segment that is included in the measure of segment profit or loss.\nLong-lived assets, excluding financial instruments and tax assets, classified by the location of the controlling statutory"
+            },
+            {
+              "score": 0.6444292,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 61,
+              "content_type": "text",
+              "chunk_index": 234,
+              "text": "9,689 \u00a0\n4\u00a0years\nCustomer-related\n\n661 \u00a0\n4\u00a0years\n\u00a0\n\u00a0\n\nFair value of intangible assets acquired\n$ \u00a0\u2002\u2002\u200221,969 \u00a0\n15\u00a0years\n\n\u00a0\n\u00a0\n\u00a0\n\u00a0\n\n\u00a0\nFollowing are the supplemental consolidated financial results of Microsoft Corporation on an unaudited pro forma basis,\nas if the acquisition had been consummated on July\u00a01, 2022:\n\u00a0\n(In millions, except per share amounts)\n\u00a0\n\u00a0\n\n\u00a0\n\n\n\nYear Ended June\u00a030,\n\u00a0\n2024 \u00a0\n2023\n\n\n\nRevenue\n\u00a0 $ \u2002\u2002247,442 \u00a0 $ \u2002\u2002219,790\nNet income\n\u00a0\n88,308 \u00a0\n71,383\nDiluted earnings per share\n\u00a0\n11.82 \u00a0\n9.55\n\u00a0\n60"
+            },
+            {
+              "score": 0.63781106,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 30,
+              "content_type": "text",
+              "chunk_index": 121,
+              "text": "provides a U.S. global intangible low-taxed income effective tax rate of 14% effective fiscal year 2027 for Microsoft. It also\nprovides bonus depreciation for certain assets placed into service after January\u00a019, 2025 and an election to expense U.S.\nincurred research or experimental expenditures.\nUncertain Tax Positions\nWe remain under audit by the IRS for tax years 2014 to 2017. With respect to the audit for tax years 2004 to 2013, on\nSeptember\u00a026, 2023, we received Notices of Proposed Adjustment (\u201cNOPAs\u201d) from the IRS. The primary issues in the\nNOPAs relate to intercompany transfer pricing. In the NOPAs, the IRS is seeking an additional tax payment of $28.9\u00a0billion\nplus penalties and interest. As of June\u00a030, 2025, we believe our allowances for income tax contingencies are adequate.\nWe disagree with the proposed adjustments and will vigorously contest the NOPAs through the IRS\u2019s administrative"
+            }
+          ]
+        },
+        {
+          "agent": "risk",
+          "chunks": [
+            {
+              "score": 0.6522962,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 23,
+              "content_type": "text",
+              "chunk_index": 94,
+              "text": "a material impact on reported revenue and expenses from our international operations in fiscal year 2025.\nFurther, global, regional, and local economic developments and changes in global trade policies such as restrictions on\ninternational trade, including tariffs and other controls on imports or exports, could result in increased supply chain\nchallenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations.\nRefer to Risk Factors in our fiscal year 2025 Form 10-K for a discussion of these factors and other risks.\nSeasonality\nOur revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is\ndriven by a higher volume of multi-year contracts executed during the period.\nReportable Segments\nWe report our financial performance based on the following segments: Productivity and Business Processes, Intelligent"
+            },
+            {
+              "score": 0.65094864,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 155,
+              "text": "Risk Categories\nHypothetical Change\n\nJune\u00a030,\n2025 Impact\n\n\n\n\nForeign currency \u2013 Revenue\n10% decrease in foreign exchange rates\n$ \u2003(11,596\n)\nEarnings\nForeign currency \u2013 Investments\n10% decrease in foreign exchange rates\n\n(17\n)\nFair\u00a0Value\nInterest rate\n100 basis point increase in U.S. treasury interest rates\n\n(1,415\n)\nFair Value\nCredit\n100 basis point increase in credit spreads\n\n(436\n)\nFair Value\nEquity\n10% decrease in equity market prices\n\n(1,213\n)\nEarnings\n\u00a0\n\u00a0\n35"
+            },
+            {
+              "score": 0.6450472,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 36,
+              "content_type": "text",
+              "chunk_index": 153,
+              "text": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nRISKS\nWe are exposed to economic risk from foreign exchange rates, interest rates, credit risk, and equity prices. We use\nderivatives instruments to manage these risks, however, they may still impact our consolidated financial statements.\nForeign Currencies\nCertain forecasted transactions, assets, and liabilities are exposed to foreign currency risk. We monitor our foreign\ncurrency exposures daily to maximize the economic effectiveness of our foreign currency positions, including hedges.\nPrincipal currency exposures include the Euro, Japanese yen, British pound, Canadian dollar, and Australian dollar.\nInterest Rate\nSecurities held in our fixed-income portfolio are subject to different interest rate risks based on their maturities. We\nmanage the average maturity of the fixed-income portfolio to achieve economic returns that correlate to certain global\nfixed-income indices.\nCredit"
+            },
+            {
+              "score": 0.64429176,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 86,
+              "text": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS \u200b\nOF OPERATIONS\nThe following Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d) is\nintended to help the reader understand the results of operations and financial condition of Microsoft Corporation. MD&A is\nprovided as a supplement to, and should be read in conjunction with, our consolidated financial statements and the\naccompanying Notes to Financial Statements. This section generally discusses the results of our operations for the year\nended June\u00a030, 2025 compared to the year ended June\u00a030, 2024. For a discussion of the year ended June\u00a030, 2024\ncompared to the year ended June\u00a030, 2023, please refer to \u201cManagement\u2019s Discussion and Analysis of Financial\nCondition and Results of Operations\u201d in our Annual Report on Form 10-K for the year ended June\u00a030, 2024 and our Form\n8-K filed on December\u00a03, 2024.\nOVERVIEW"
+            },
+            {
+              "score": 0.64201033,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 88,
+              "text": "marketing, and selling our other products and services; and income taxes.\nHighlights from fiscal year 2025 compared with fiscal year 2024 included:\n\u2022\u200b\nMicrosoft Cloud revenue increased 23% to $168.9\u00a0billion.\n\u2022\u200b\nMicrosoft 365 Commercial products and cloud services revenue increased 14% driven by Microsoft 365\nCommercial cloud revenue growth of 15%.\n\u2022\u200b\nMicrosoft 365 Consumer products and cloud services revenue increased 11% driven by Microsoft 365\nConsumer cloud revenue growth of 11%.\n\u2022\u200b\nLinkedIn revenue increased 9%.\n\u2022\u200b\nDynamics products and cloud services revenue increased 15% driven by Dynamics 365 revenue growth of\n19%.\n\u2022\u200b\nServer products and cloud services revenue increased 23% driven by Azure and other cloud services\nrevenue growth of 34%.\n\u2022\u200b\nWindows OEM and Devices revenue increased 3%.\n\u2022\u200b\nXbox content and services revenue increased 16%.\n\u2022\u200b\nSearch and news advertising revenue excluding traffic acquisition costs increased 20%.\nIndustry Trends and Opportunities"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "q15",
+      "question": "What is Microsoft's employee satisfaction score in India for 2025?",
+      "expected_routes": [
+        "general"
+      ],
+      "actual_routes": [
+        "general"
+      ],
+      "routing_correct": true,
+      "reference_answer": "The information is not available in the provided documents.",
+      "generated_answer": "The information is not available in the provided documents.",
+      "answer_quality": null,
+      "abstention_expected": true,
+      "abstention_detected": true,
+      "retrieved_evidence": [
+        {
+          "agent": "general",
+          "chunks": [
+            {
+              "score": 0.6272705,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 86,
+              "text": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS \u200b\nOF OPERATIONS\nThe following Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations (\u201cMD&A\u201d) is\nintended to help the reader understand the results of operations and financial condition of Microsoft Corporation. MD&A is\nprovided as a supplement to, and should be read in conjunction with, our consolidated financial statements and the\naccompanying Notes to Financial Statements. This section generally discusses the results of our operations for the year\nended June\u00a030, 2025 compared to the year ended June\u00a030, 2024. For a discussion of the year ended June\u00a030, 2024\ncompared to the year ended June\u00a030, 2023, please refer to \u201cManagement\u2019s Discussion and Analysis of Financial\nCondition and Results of Operations\u201d in our Annual Report on Form 10-K for the year ended June\u00a030, 2024 and our Form\n8-K filed on December\u00a03, 2024.\nOVERVIEW"
+            },
+            {
+              "score": 0.61294454,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 80,
+              "content_type": "text",
+              "chunk_index": 298,
+              "text": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Microsoft Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Microsoft Corporation and subsidiaries (the\n\u201cCompany\u201d) as of June\u00a030, 2025 and 2024, the related consolidated statements of income, comprehensive income, cash\nflows, and stockholders\u2019 equity, for each of the three years in the period ended June\u00a030, 2025, and the related notes\n(collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material\nrespects, the financial position of the Company as of June\u00a030, 2025 and 2024, and the results of its operations and its\ncash flows for each of the three years in the period ended June\u00a030, 2025, in conformity with accounting principles\ngenerally accepted in the United States of America."
+            },
+            {
+              "score": 0.5785967,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 20,
+              "content_type": "text",
+              "chunk_index": 82,
+              "text": "safeguards so that our operations, products, and services meet applicable legal standards. Our business teams, with legal\nsupport, manage the compliance programs and prepare external regulatory and commercial reporting, and our internal\naudit teams conduct reviews of the programs and processes.\u00a0While we have a unified approach to regulatory compliance,\nsome of the programs and processes are tailored to meet specific regulatory obligations, such as with the creation of\nindependent compliance functions required by the European Union (\u201cEU\u201d) Digital Markets Act and the EU Digital Services\nAct, which oversee, monitor, and assess the company\u2019s compliance with these acts.\nFor a description of the risks we face related to regulatory matters, refer to Risk Factors in our fiscal year 2025 Form\u00a010K.\nAVAILABLE INFORMATION\nOur Internet address is www.microsoft.com. At our Investor Relations website, www.microsoft.com/investor, we make"
+            },
+            {
+              "score": 0.56964266,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 84,
+              "content_type": "text",
+              "chunk_index": 314,
+              "text": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Microsoft Corporation\nOpinion on Internal Control over Financial Reporting\nWe have audited the internal control over financial reporting of Microsoft Corporation and subsidiaries (the \u201cCompany\u201d) as\nof June\u00a030, 2025, based on criteria established in Internal Control \u2014 Integrated Framework (2013)\u00a0issued by the\nCommittee of Sponsoring Organizations of the Treadway Commission (COSO). In our opinion, the Company maintained,\nin all material respects, effective internal control over financial reporting as of June\u00a030, 2025, based on criteria established\nin Internal Control \u2014 Integrated Framework (2013)\u00a0issued by COSO.\nWe have also audited, in accordance with the standards of the Public Company Accounting Oversight Board\n(United\u00a0States) (PCAOB), the consolidated financial statements as of and for the year ended June\u00a030, 2025, of the"
+            },
+            {
+              "score": 0.56675684,
+              "document_id": 13,
+              "document_type": "Annual Report",
+              "page_number": 22,
+              "content_type": "text",
+              "chunk_index": 87,
+              "text": "8-K filed on December\u00a03, 2024.\nOVERVIEW\nMicrosoft is a technology company committed to making digital technology and artificial intelligence (\u201cAI\u201d) available\nbroadly and doing so responsibly, with a mission to empower every person and every organization on the planet to\nachieve more. We create platforms and tools, powered by AI, that deliver innovative solutions that meet the evolving\nneeds of our customers.\nWe generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and\nbusinesses; licensing and supporting an array of software products; delivering relevant online advertising to a global\naudience; and designing and selling devices. Our most significant expenses are related to compensating employees;\nsupporting and investing in our cloud-based services, including datacenter operations; designing, manufacturing,\nmarketing, and selling our other products and services; and income taxes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
