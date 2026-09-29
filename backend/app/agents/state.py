@@ -7,6 +7,8 @@ class DueDiligenceState(TypedDict, total=False):
     question: str
     case_id: int
 
+    due_diligence_type: Optional[str]
+
     # Routing
     routes: List[str]
 
@@ -15,7 +17,7 @@ class DueDiligenceState(TypedDict, total=False):
 
     # Retrieved evidence
     retrieved_chunks: List[Dict]
-
+    retrieved_evidence: List[Dict]
     # Final response
     answer: str
 
@@ -25,4 +27,14 @@ class DueDiligenceState(TypedDict, total=False):
     # Error information
     error: Optional[str]
 
-    retrieved_evidence: List[Dict]
+    # Report generation
+    report_type: Optional[str]
+    report: Optional[Dict]
+
+    #guardrails
+    guardrail_triggered:bool
+    guardrail_reason:Optional[str]
+
+    # LLM observability
+    llm_metrics: Annotated[List[Dict], add]
+    synthesis_llm_metrics:Dict

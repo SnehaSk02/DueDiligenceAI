@@ -1,12 +1,14 @@
 from datetime import datetime
 
-from sqlalchemy import String, DateTime, ForeignKey
+from sqlalchemy import String, DateTime, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from backend.app.database.base import Base
 
 class Document(Base):
     __tablename__="documents"
+
+    __table_args__ = (UniqueConstraint("case_id","filename",name="uq_case_document_filename"),)
 
     id : Mapped[int] = mapped_column(primary_key=True,autoincrement=True)
 
@@ -25,3 +27,4 @@ class Document(Base):
     updated_at : Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate = datetime.utcnow)
     
     case = relationship("DueDiligenceCase", back_populates="documents")
+

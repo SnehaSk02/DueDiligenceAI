@@ -2,7 +2,10 @@ import json
 from langgraph.graph import StateGraph, START, END
 from backend.app.services.rag_services import RAGService
 from backend.app.agents.state import DueDiligenceState
-from backend.app.services.llm_service import LLMService
+from backend.app.services.llm_gateway import gateway
+from backend.app.services.guardrails.output_guardrail import validate_agent_output
+from backend.app.services.guardrails.generation_guardrails import generation_guardrails
+
 
 FINANCIAL_KEYWORDS = [
     "revenue",
@@ -88,8 +91,6 @@ def llm_route(question: str) -> list[str]:
     Use the LLM to determine which specialized agents
     are relevant to the user's question.
     """
-
-    llm = LLMService()
 
     prompt = f"""
 You are the routing controller for a corporate
@@ -177,18 +178,13 @@ USER QUESTION:
 {question}
 """
 
-    response = llm.client.chat.completions.create(
-        model=llm.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
+    response = gateway.generate(
+    prompt=prompt,
+    temperature=0,
+    response_format={"type": "json_object"}
+)
 
-    content = response.choices[0].message.content.strip()
+    content = response["content"].strip()
 
     result = json.loads(content)
 
@@ -227,6 +223,33 @@ def orchestrator(state: DueDiligenceState) -> DueDiligenceState:
         deterministic keyword routing
     """
 
+    #report generation
+    report_type = state.get("report_type")
+    print("\nDEBUG ORCHESTRATOR STATE:")
+    print(state)
+    print("DEBUG REPORT TYPE:", state.get("report_type"))
+
+    if report_type:
+        if report_type == "full":
+            routes=["financial","risk","general"]
+        elif report_type == "financial":
+            routes=["financial"]
+        elif report_type == "risk":
+            routes = ["risk"]
+        else:
+            raise ValueError(f"Unsupported report type:{report_type}")
+
+        print("\n================ ORCHESTRATOR ================")
+        print("MODE: REPORT")
+        print("Report type:", report_type)
+        print("Routes:", routes)
+        print("================================================")
+
+        return {
+            "routes": routes
+        }
+
+    #NormalQ&A
     question = state["question"]
 
     try:
@@ -255,14 +278,54 @@ def orchestrator(state: DueDiligenceState) -> DueDiligenceState:
         "routes": routes
     }
 
-
 def financial_agent(state: DueDiligenceState) -> DueDiligenceState:
     rag_service = RAGService()
 
-    financial_question = f"""
+    due_diligence_type = state.get(
+    "due_diligence_type",
+    "Investment")
+    report_mode = bool(state.get("report_type"))
+    
+    if report_mode:
+
+        financial_question = """
+Analyze the company's financial position for a due diligence report.
+
+Focus exclusively on information explicitly available in the
+provided company documents.
+
+Analyze, where supported by the documents:
+
+- Revenue
+- Revenue growth
+- Profit and loss
+- Operating income
+- Net income
+- Earnings per share
+- Expenses
+- Profit margins
+- Assets
+- Liabilities
+- Debt
+- Cash flow
+- Liquidity
+- Financial performance
+- Financial trends
+- Business segment financial performance
+
+Do not infer missing information.
+
+If a financial metric or topic is not available in the documents,
+do not invent it.
+"""
+
+    else:
+
+        financial_question = f"""
 Extract and analyze ONLY the financial part of the user's question.
 
 Focus exclusively on:
+
 - revenue
 - profit or loss
 - operating income
@@ -287,125 +350,267 @@ USER QUESTION:
 
 FINANCIAL SUBQUESTION:
 """
+    if report_mode:
+        retrieval_query = """
+            Analyze the company's financial position for due diligence.
+
+            Retrieve information about:
+
+            - Revenue
+            - Revenue growth
+            - Profit and loss
+            - Operating income
+            - Net income
+            - Earnings per share
+            - Expenses
+            - Profit margins
+            - Assets
+            - Liabilities
+            - Debt
+            - Cash flow
+            - Liquidity
+            - Financial performance
+            - Financial trends
+            - Business segment financial performance
+
+            Focus only on information explicitly available in the
+            provided company documents.
+            """
+    else:
+        retrieval_query = state["question"]
 
     retrieved_chunks = rag_service.retrieve(
-    question=f"What was Microsoft's net income in 2025?",
-    case_id=state["case_id"],
-    top_k=5
-)
+        question=retrieval_query,
+        case_id=state["case_id"],
+        top_k=5
+    )
 
     if not retrieved_chunks:
         return {
-            "agent_answers": [
-                {
-                    "agent": "financial",
-                    "finding": "The information is not available in the provided documents.",
-                    "evidence": [],
-                    "sources": []
-                }
-            ]
-        }
+                "agent_answers": [
+                    {
+                        "agent": "financial",
+                        "finding": "The information is not available in the provided documents.",
+                        "supported": False,
+                        "evidence": [],
+                        "sources": [],
+                        "guardrail_triggered": True,
+                        "guardrail_reason": "No retrieved evidence."
+
+                    }
+                ]
+            }
 
     context = rag_service.build_context(retrieved_chunks)
 
-    llm = LLMService()
+    if report_mode:
 
-    prompt = f"""
-You are the Financial Analysis Agent in a document-based
-due diligence system.
+        prompt = f"""
+    You are the Financial Analysis Agent in a document-based
+    corporate due diligence system.
+    The business purpose of this due diligence is:
+    {due_diligence_type}
+    The user requested a {state["report_type"]} due diligence report.
 
-Analyze the user's question using ONLY the retrieved
-document evidence below.
+    Analyze the company's financial information using ONLY the
+    retrieved document evidence below.
 
-USER QUESTION:
-{state["question"]}
+    DOCUMENT EVIDENCE:
+    {context}
 
-Your task is to answer ONLY the financial aspect of this question.
+    {generation_guardrails}
 
-DOCUMENT EVIDENCE:
-{context}
+    RULES:
 
-RULES:
-1. Focus only on financial information.
-2. Do not use outside knowledge.
-3. Do not invent facts.
-4. Preserve exact numbers, percentages, dates, and financial figures.
-5. If the evidence does not contain the requested financial information,
-   say:
-   "The information is not available in the provided documents."
-6. Give a concise factual finding.
-7. Do not make investment recommendations.
-8. If the question contains multiple topics, answer only the financial topic.
-9. Do not create or invent citation markers, source labels, or evidence references.
-10. Do not write labels such as "SOURCE 1", "[SOURCE 1]", "【SOURCE 1】",
-    "Evidence 1", "[Evidence 1]", or similar.
-11. Return only the factual financial finding. The application will display
-    document sources separately.
+    1. Analyze only financial information.
+    2. Do not use outside knowledge.
+    3. Do not invent facts.
+    4. Preserve exact numbers, percentages, dates, and financial figures.
+    5. Identify important financial trends when directly supported.
+    6. If information is unavailable, explicitly state that it is
+    not available in the provided documents.
+    7. Do not make investment recommendations.
+    8. Do not create citation markers.
+    9. Do not create source labels.
+    10. Return ONLY a JSON object.
+    11. The JSON must contain exactly:
+        "finding"
+        "supported"
+    12. "supported" must be a boolean.
+    13. Do not include markdown.
 
-FINANCIAL FINDING:
-"""
+    JSON FORMAT:
 
-    response = llm.client.chat.completions.create(
-        model=llm.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
+    {{
+        "finding": "Factual financial analysis based only on the evidence.",
+        "supported": true
+    }}
+    """
 
-    finding = response.choices[0].message.content.strip()
+    else:
 
-    sources = []
+        prompt = f"""
+    You are the Financial Analysis Agent in a document-based
+    due diligence system.
 
-    for chunk in retrieved_chunks:
-        sources.append({
-            "document_id": chunk["document_id"],
-            "document_type": chunk["document_type"],
-            "page_number": chunk["page_number"],
-            "content_type": chunk["content_type"],
-            "score": chunk["score"]
-        })
+    Analyze the user's question using ONLY the retrieved
+    document evidence below.
 
+    USER QUESTION:
+    {state["question"]}
+
+    DOCUMENT EVIDENCE:
+    {context}
+
+    {generation_guardrails}
+
+    RULES:
+
+    1. Focus only on financial information.
+    2. Do not use outside knowledge.
+    3. Do not invent facts.
+    4. Preserve exact numbers, percentages, dates, and financial figures.
+    5. If the evidence does not contain the requested financial information,
+    say:
+    "The information is not available in the provided documents."
+    6. Give a concise factual finding.
+    7. Do not make investment recommendations.
+    8. Do not create citation markers.
+    9. Return ONLY a JSON object with exactly:
+    "finding" and "supported".
+    10. "supported" must be a boolean.
+    11. Do not include markdown or code fences.
+
+    JSON FORMAT:
+
+    {{
+        "finding": "Your factual financial finding.",
+        "supported": true
+    }}
+    """
+
+    response = gateway.generate(
+            prompt=prompt,
+            temperature=0,
+            response_format = {"type":"json_object"}
+        )
+
+    raw_output = response["content"].strip()
+    validation_result = validate_agent_output(raw_output=raw_output,
+                                                retrieved_chunks=retrieved_chunks)
+    finding = validation_result["finding"]
+    supported = validation_result["supported"]
+    sources = validation_result["sources"]  
+    print("\nDEBUG: LLM RESPONSE RECEIVED")
+    print("Raw output:", raw_output)
+
+    print("\nDEBUG: VALIDATION RESULT")
+    print(validation_result)
+
+    print("\nDEBUG: FINANCIAL AGENT RETURNING RESULT")
+    
+    print("\nDEBUG: FINANCIAL AGENT EXECUTED")
     return {
-        "agent_answers": [
-            {
-                "agent": "financial",
-                "finding": finding,
-                "evidence": retrieved_chunks,
-                "sources": sources
-            }
-        ]
-    }
+            "agent_answers": [
+                {
+                    "agent": "financial",
+                    "finding": finding,
+                    "supported": supported,
+                    "evidence": retrieved_chunks,
+                    "sources": sources,
+                    "guardrail_triggered": validation_result["guardrail_triggered"],
+                    "guardrail_reason": validation_result["reason"]}],
+                    "llm_metrics":[ {
+                        "agent": "financial",
+                        "model": response.get("model"),
+                    "provider": response.get("provider"),
+                    "prompt_tokens": response.get("usage", {}).get("prompt_tokens", 0),
+                    "completion_tokens": response.get("usage", {}).get("completion_tokens", 0),
+                    "total_tokens": response.get("usage", {}).get("total_tokens", 0),
+                    "latency_seconds": response.get("latency_seconds", 0),
+                    "attempts": response.get("attempts", 0)
+                    
+                    }
+                    ]
+                    }
+                
+            
 
 
 def risk_agent(state: DueDiligenceState) -> DueDiligenceState:
     rag_service = RAGService()
+    due_diligence_type = state.get(
+    "due_diligence_type",
+    "Investment")
+    report_mode = bool(state.get("report_type"))
 
-    risk_question = f"""
+    if report_mode:
+
+        risk_question =f"""
+Analyze the company's risk profile for a due diligence report.
+The business purpose of this due diligence is:
+{due_diligence_type}
+Focus exclusively on information explicitly available in the
+provided company documents.
+
+Retrieve information related to:
+
+- Business risks
+- Market risks
+- Competitive risks
+- Regulatory risks
+- Legal risks
+- Compliance risks
+- Financial risks
+- Liquidity risks
+- Credit risks
+- Interest rate risks
+- Foreign exchange risks
+- Cybersecurity risks
+- Operational risks
+- Supply chain risks
+- Technology risks
+- Strategic risks
+- Concentration risks
+- Material uncertainties
+- Contingent liabilities
+- Other explicitly disclosed risks
+
+Do not infer missing risks.
+
+If a risk or risk-related topic is not available in the documents,
+do not invent it.
+"""
+
+        retrieval_query = risk_question
+
+    else:
+
+        risk_question = f"""
 Extract and analyze ONLY the risk-related part of the user's question.
 
 Focus exclusively on:
-- financial market risks
-- foreign currency risk
-- interest rate risk
-- credit risk
-- equity price risk
-- liquidity risk
-- market risk
-- regulatory and legal risks
-- operational risks
+
+- business risks
+- market risks
+- competitive risks
+- regulatory risks
+- legal risks
+- compliance risks
+- financial risks
+- liquidity risks
+- credit risks
+- interest rate risks
+- foreign exchange risks
 - cybersecurity risks
-- competition risks
+- operational risks
 - supply chain risks
-- business performance risks
-- other explicitly disclosed uncertainties
+- technology risks
+- strategic risks
 
 IMPORTANT:
-If the user's question contains other topics such as revenue,
-profit, expenses, financial performance, or other non-risk topics,
+If the user's question contains financial metrics,
+revenue, profit, expenses, or other non-risk topics,
 IGNORE those parts.
 
 USER QUESTION:
@@ -414,120 +619,237 @@ USER QUESTION:
 RISK SUBQUESTION:
 """
 
+        retrieval_query = state["question"]
+
     retrieved_chunks = rag_service.retrieve(
-        question=risk_question,
+        question=retrieval_query,
         case_id=state["case_id"],
         top_k=5
     )
 
     if not retrieved_chunks:
         return {
-            "agent_answers": [
-                {
-                    "agent": "risk",
-                    "finding": "The information is not available in the provided documents.",
-                    "evidence": [],
-                    "sources": []
+                    "agent_answers": [
+                        {
+                            "agent": "risk",
+                            "finding": "The information is not available in the provided documents.",
+                            "supported": False,
+                            "evidence": [],
+                            "sources": [],
+                            "guardrail_triggered": True,
+                            "guardrail_reason": "No retrieved evidence."
+        
+                        }
+                    ]
                 }
-            ]
-        }
 
     context = rag_service.build_context(retrieved_chunks)
 
-    llm = LLMService()
+    if report_mode:
 
-    prompt = f"""
-You are the Risk Analysis Agent in a document-based
-due diligence system.
+        prompt = f"""
+    You are the Risk Analysis Agent in a document-based
+    corporate due diligence system.
 
-Analyze the user's question using ONLY the retrieved
-document evidence below.
+    The user requested a {state["report_type"]} due diligence report.
 
-USER QUESTION:
-{state["question"]}
+    Analyze the company's risk information using ONLY the
+    retrieved document evidence below.
 
-Your task is to answer ONLY the risk-related aspect of this question.
+    DOCUMENT EVIDENCE:
+    {context}
 
-DOCUMENT EVIDENCE:
-{context}
+    {generation_guardrails}
 
-RULES:
-1. Focus only on risks, uncertainties, exposures, and risk factors.
-2. Use ONLY information contained in the document evidence.
-3. Do not use outside knowledge.
-4. Do not invent facts.
-5. Do not treat normal financial performance as a risk unless
-   the document explicitly identifies it as a risk or uncertainty.
-6. Preserve important numbers, percentages, dates, and figures.
-7. Identify the specific type of risk when possible.
-88. If the evidence does not contain the requested risk information,
-   say:
-   "The information is not available in the provided documents."
-9. Give a concise factual finding.
-10. Do not make investment recommendations.
-11. If the question contains multiple topics, answer only the risk-related topic.
-12. Do not create or invent citation markers, source labels, or evidence references.
-13. Do not write labels such as "SOURCE 1", "[SOURCE 1]", "Source 1",
-    "【SOURCE 1】", "Evidence 1", "[Evidence 1]", or similar.
-14. Return only the factual risk finding. The application will display
-    document sources separately.
+    RULES:
 
-RISK FINDING:
-"""
+    1. Analyze only risk-related information.
+    2. Do not use outside knowledge.
+    3. Do not invent risks.
+    4. Preserve exact facts, dates, percentages, amounts,
+    and other relevant details from the evidence.
+    5. Identify important risk factors and trends when directly
+    supported by the documents.
+    6. If risk information is unavailable, explicitly state that it
+    is not available in the provided documents.
+    7. Do not make investment recommendations.
+    8. Do not create citation markers.
+    9. Do not create source labels.
+    10. Return ONLY a JSON object.
+    11. The JSON must contain exactly:
+        "finding"
+        "supported"
+    12. "supported" must be a boolean.
+    13. Do not include markdown.
 
-    response = llm.client.chat.completions.create(
-        model=llm.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
-    )
+    JSON FORMAT:
 
-    finding = response.choices[0].message.content.strip()
+    {{
+        "finding": "Factual risk analysis based only on the evidence.",
+        "supported": true
+    }}
+    """
 
-    sources = []
+    else:
 
-    for chunk in retrieved_chunks:
-        sources.append({
-            "document_id": chunk["document_id"],
-            "document_type": chunk["document_type"],
-            "page_number": chunk["page_number"],
-            "content_type": chunk["content_type"],
-            "score": chunk["score"]
-        })
+        prompt = f"""
+    You are the Risk Analysis Agent in a document-based
+    due diligence system.
 
+    Analyze the user's question using ONLY the retrieved
+    document evidence below.
+
+    USER QUESTION:
+    {state["question"]}
+
+    DOCUMENT EVIDENCE:
+    {context}
+
+    {generation_guardrails}
+
+    RULES:
+
+    1. Focus only on risk-related information.
+    2. Do not use outside knowledge.
+    3. Do not invent facts or risks.
+    4. Preserve exact facts, dates, percentages, and amounts.
+    5. If the evidence does not contain the requested risk information,
+    say:
+    "The information is not available in the provided documents."
+    6. Give a concise factual finding.
+    7. Do not make investment recommendations.
+    8. Do not create citation markers.
+    9. Return ONLY a JSON object with exactly:
+    "finding" and "supported".
+    10. "supported" must be a boolean.
+    11. Do not include markdown or code fences.
+
+    JSON FORMAT:
+
+    {{
+        "finding": "Your factual risk finding.",
+        "supported": true
+    }}
+    """
+
+    response = gateway.generate(
+        prompt=prompt,
+        temperature=0,
+        response_format = {"type":"json_object"}
+            )
+        
+    raw_output = response["content"].strip()
+    validation_result = validate_agent_output(raw_output=raw_output,
+                                                    retrieved_chunks=retrieved_chunks)
+    finding = validation_result["finding"]
+    supported = validation_result["supported"]
+    sources = validation_result["sources"]  
+            
+        
     return {
-        "agent_answers": [
-            {
-                "agent": "risk",
-                "finding": finding,
-                "evidence": retrieved_chunks,
-                "sources": sources
-            }
-        ]
-    }
+            "agent_answers": [
+                    {
+                        "agent": "risk",
+                        "finding": finding,
+                        "supported": supported,
+                        "evidence": retrieved_chunks,
+                        "sources": sources,
+                        "guardrail_triggered": validation_result["guardrail_triggered"],
+                        "guardrail_reason": validation_result["reason"]}],
+                                        "llm_metrics":[ {
+                                            "agent": "risk",
+                                            "model": response.get("model"),
+                                        "provider": response.get("provider"),
+                                        "prompt_tokens": response.get("usage", {}).get("prompt_tokens", 0),
+                                        "completion_tokens": response.get("usage", {}).get("completion_tokens", 0),
+                                        "total_tokens": response.get("usage", {}).get("total_tokens", 0),
+                                        "latency_seconds": response.get("latency_seconds", 0),
+                                        "attempts": response.get("attempts", 0)
+                                        
+                                        }
+                                        ]
+                                        }
+    
 
+    
 
 def general_agent(state: DueDiligenceState) -> DueDiligenceState:
 
     rag_service = RAGService()
+    due_diligence_type = state.get(
+    "due_diligence_type",
+    "Investment")
+    report_mode = bool(state.get("report_type"))
 
-    general_question = f"""
+    if report_mode:
+
+        general_question = f"""
+Analyze the company from a general due diligence perspective.
+The business purpose of this due diligence is:
+{due_diligence_type}
+Focus exclusively on information explicitly available in the
+provided company documents.
+
+Retrieve information related to:
+
+- Company overview
+- Business model
+- Products and services
+- Business segments
+- Geographic presence
+- Major markets
+- Customers and customer concentration
+- Suppliers and dependencies
+- Strategic initiatives
+- Business operations
+- Competitive position
+- Corporate developments
+- Material events
+- Other important company-level information relevant to
+  due diligence
+
+Do not infer missing information.
+
+If information is not available in the documents,
+do not invent it.
+"""
+
+        retrieval_query = general_question
+
+    else:
+
+        general_question = f"""
 Analyze the following user question from a general
 due diligence perspective.
 
-Retrieve information relevant to the question from the
-provided company documents.
+Focus on company-level information such as:
+
+- company overview
+- business model
+- products and services
+- business segments
+- geographic presence
+- customers
+- suppliers
+- operations
+- strategy
+- competitive position
+- corporate developments
+
+Do not focus primarily on detailed financial metrics or
+specific risk analysis unless they are directly relevant
+to answering the user's question.
 
 USER QUESTION:
 {state["question"]}
+
+GENERAL DUE DILIGENCE SUBQUESTION:
 """
 
+        retrieval_query = state["question"]
+
     retrieved_chunks = rag_service.retrieve(
-        question=general_question,
+        question=retrieval_query,
         case_id=state["case_id"],
         top_k=5
     )
@@ -538,19 +860,67 @@ USER QUESTION:
                 {
                     "agent": "general",
                     "finding": "The information is not available in the provided documents.",
+                    "supported": False,
                     "evidence": [],
-                    "sources": []
+                    "sources": [],
+                    "guardrail_triggered": True,
+                    "guardrail_reason": "No retrieved evidence."
                 }
             ]
         }
 
     context = rag_service.build_context(retrieved_chunks)
 
-    llm = LLMService()
+    if report_mode:
 
-    prompt = f"""
-You are the General Due Diligence Agent in a
-document-based due diligence system.
+        prompt = f"""
+You are the General Due Diligence Agent in a document-based
+corporate due diligence system.
+
+The user requested a {state["report_type"]} due diligence report.
+
+Analyze the company's general business information using ONLY
+the retrieved document evidence below.
+
+DOCUMENT EVIDENCE:
+{context}
+
+{generation_guardrails}
+
+RULES:
+
+1. Analyze only general company and business information.
+2. Do not use outside knowledge.
+3. Do not invent facts.
+4. Preserve exact facts, dates, names, figures, and other
+   relevant details from the evidence.
+5. Identify important company-level findings when directly
+   supported by the documents.
+6. If information is unavailable, explicitly state that it
+   is not available in the provided documents.
+7. Do not make investment recommendations.
+8. Do not create citation markers.
+9. Do not create source labels.
+10. Return ONLY a JSON object.
+11. The JSON must contain exactly:
+    "finding"
+    "supported"
+12. "supported" must be a boolean.
+13. Do not include markdown.
+
+JSON FORMAT:
+
+{{
+    "finding": "Factual general due diligence analysis based only on the evidence.",
+    "supported": true
+}}
+"""
+
+    else:
+
+        prompt = f"""
+You are the General Due Diligence Agent in a document-based
+due diligence system.
 
 Analyze the user's question using ONLY the retrieved
 document evidence below.
@@ -561,57 +931,72 @@ USER QUESTION:
 DOCUMENT EVIDENCE:
 {context}
 
+{generation_guardrails}
+
 RULES:
 
-1. Answer the user's question using ONLY the document evidence.
+1. Focus on general company and business information.
 2. Do not use outside knowledge.
-3. Do not invent or assume facts.
-4. Preserve important numbers, dates, percentages,
-   and other relevant figures.
+3. Do not invent facts.
+4. Preserve exact facts, dates, names, and figures.
 5. If the evidence does not contain the requested information,
    say:
-
    "The information is not available in the provided documents."
-
 6. Give a concise factual finding.
 7. Do not make investment recommendations.
-8. Do not create or invent citation markers such as
-   [Evidence 1], 【Evidence 1】, or SOURCE 1.
+8. Do not create citation markers.
+9. Return ONLY a JSON object with exactly:
+   "finding" and "supported".
+10. "supported" must be a boolean.
+11. Do not include markdown or code fences.
 
-GENERAL FINDING:
+JSON FORMAT:
+
+{{
+    "finding": "Your factual general due diligence finding.",
+    "supported": true
+}}
 """
 
-    response = llm.client.chat.completions.create(
-        model=llm.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        temperature=0
+    response = gateway.generate(
+        prompt=prompt,
+        temperature=0,
+        response_format={"type": "json_object"}
     )
 
-    finding = response.choices[0].message.content.strip()
+    raw_output = response["content"].strip()
 
-    sources = []
+    validation_result = validate_agent_output(
+        raw_output=raw_output,
+        retrieved_chunks=retrieved_chunks
+    )
 
-    for chunk in retrieved_chunks:
-        sources.append({
-            "document_id": chunk["document_id"],
-            "document_type": chunk["document_type"],
-            "page_number": chunk["page_number"],
-            "content_type": chunk["content_type"],
-            "score": chunk["score"]
-        })
+    finding = validation_result["finding"]
+    supported = validation_result["supported"]
+    sources = validation_result["sources"]
 
     return {
         "agent_answers": [
             {
                 "agent": "general",
                 "finding": finding,
+                "supported": supported,
                 "evidence": retrieved_chunks,
-                "sources": sources
+                "sources": sources,
+                "guardrail_triggered": validation_result["guardrail_triggered"],
+                "guardrail_reason": validation_result["reason"]
+            }
+        ],
+        "llm_metrics": [
+            {
+                "agent": "general",
+                "model": response.get("model"),
+                "provider": response.get("provider"),
+                "prompt_tokens": response.get("usage", {}).get("prompt_tokens", 0),
+                "completion_tokens": response.get("usage", {}).get("completion_tokens", 0),
+                "total_tokens": response.get("usage", {}).get("total_tokens", 0),
+                "latency_seconds": response.get("latency_seconds", 0),
+                "attempts": response.get("attempts", 0)
             }
         ]
     }
@@ -621,6 +1006,10 @@ def synthesis_agent(state: DueDiligenceState) -> DueDiligenceState:
     print("\n================ SYNTHESIS INPUT ================")
 
     agent_answers = state.get("agent_answers", [])
+    due_diligence_type = state.get(
+        "due_diligence_type",
+        "Investment")
+    report_type = state.get("report_type")
 
     print("Number of agent results:", len(agent_answers))
 
@@ -639,159 +1028,211 @@ def synthesis_agent(state: DueDiligenceState) -> DueDiligenceState:
         return {
             **state,
             "answer": "No agent results were available.",
-            "sources": []
+            "sources": [],
+            "retrieved_evidence": []
         }
 
-    context_parts = []
+    if report_type:
 
-    for result in agent_answers:
+        context_parts = []
 
-        evidence_text = []
+        for result in agent_answers:
 
-        for i, chunk in enumerate(
-            result.get("evidence", []),
-            start=1
-        ):
-            evidence_text.append(
-                f"""
-Evidence {i}
+            evidence_text = []
+
+            for i, chunk in enumerate(
+                result.get("evidence", []),
+                start=1
+            ):
+                evidence_text.append(
+                    f"""
 Document: {chunk.get("document_type")}
 Page: {chunk.get("page_number")}
 Content type: {chunk.get("content_type")}
 
 {chunk.get("text")}
 """
-            )
+                )
 
-        context_parts.append(
-            f"""
+            context_parts.append(
+                f"""
 AGENT: {result.get("agent")}
 
 AGENT FINDING:
 {result.get("finding")}
 
-RETRIEVED DOCUMENT EVIDENCE:
+DOCUMENT EVIDENCE:
 {"".join(evidence_text)}
 """
-        )
+            )
 
-    agent_context = "\n".join(context_parts)
+        agent_context = "\n".join(context_parts)
 
-    prompt = f"""
+        prompt = f"""
 You are the final synthesis agent in a document-based
-due diligence system.
+corporate due diligence system.
+BUSINESS PURPOSE:
+{due_diligence_type}
+The user requested a:
 
-The specialized agents analyzed the user's question
-using retrieved evidence from the company's documents.
+{report_type}
+The business purpose tells you why the due diligence
+is being performed.
 
-Your task is to produce ONE final answer using ONLY
-the retrieved document evidence.
+Your task is to create a structured due diligence report
+using ONLY the findings and document evidence provided
+by the specialist agents.
 
-USER QUESTION:
-{state["question"]}
+SPECIALIST AGENT ANALYSIS:
 
-SPECIALIZED AGENT ANALYSIS:
 {agent_context}
 
-RULES:
+{generation_guardrails}
 
-1. Use ONLY the retrieved document evidence provided above.
+IMPORTANT RULES:
+
+1. Use ONLY information supported by the retrieved document evidence.
 
 2. Do not use outside knowledge.
 
-3. Do not invent or assume facts.
+3. Do not invent facts, numbers, dates, risks, or company information.
 
-4. Treat the retrieved document evidence as the
-   authoritative source.
+4. Agent findings are interpretations. Verify them against the
+   retrieved evidence before including them.
 
-5. Agent findings are interpretations of the evidence.
-   Verify them against the actual retrieved evidence.
+5. Preserve exact numbers, percentages, dates, and financial figures.
 
-6. Preserve important numbers, dates, percentages,
-   financial figures, and risk categories.
-
-7. If multiple agents provide relevant information,
-   combine the relevant findings into one coherent answer.
-
-8. Do not include information that is unsupported by
-   the retrieved evidence.
-
-9. If the retrieved evidence does not contain enough
-   information to answer the question, say:
-
+6. If information required for a section is not available,
+   clearly state:
    "The information is not available in the provided documents."
 
-10. Do not make investment recommendations.
+7. Do not make investment recommendations.
 
-11. Give a concise, factual answer.
+8. Do not create unsupported conclusions.
 
-12. Do not create, invent, or output evidence labels such as
-    "Evidence 1", "Evidence 2", "SOURCE 1", "[Evidence 1]",
-    or similar citation markers.
+9. Potential red flags must be based on explicitly disclosed
+   evidence from the documents.
 
-13. Do not create citations or references that are not explicitly
-    provided in the input.
+10. Do not create citation markers such as:
+    SOURCE 1
+    Evidence 1
+    [SOURCE 1]
 
-FINAL ANSWER:
+11. Return ONLY valid JSON.
 
-Return only the factual answer to the user's question.
-Do not include source numbers, evidence labels, citation markers,
-or references such as [Evidence 1], 【Evidence 1】, or SOURCE 1.
-The application will display the document sources separately.
+12. Do not include markdown or code fences.
+
+REPORT STRUCTURE:
+
+{{
+    "executive_summary": "Concise summary of the major findings.",
+
+    "company_overview": "Overview of the company and its business based on the documents.",
+
+    "financial_analysis": "Financial findings supported by the documents.",
+
+    "risk_analysis": "Risk findings supported by the documents.",
+
+    "key_findings": [
+        "Important finding 1",
+        "Important finding 2"
+    ],
+
+    "red_flags": [
+        "Potential concern explicitly supported by the documents"
+    ],
+
+    "supported": true
+}}
+
+REPORT TYPE:
+{report_type}
 """
 
-    llm = LLMService()
+        response = gateway.generate(
+            prompt=prompt,
+            temperature=0,
+            response_format={"type": "json_object"}
+        )
 
-    response = llm.client.chat.completions.create(
-        model=llm.model,
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
+        raw_output = response["content"].strip()
+
+        try:
+
+            report = json.loads(raw_output)
+
+        except json.JSONDecodeError:
+
+            return {
+                "answer": raw_output,
+                "report": None,
+                "sources": [],
+                "retrieved_evidence": [],
+                "guardrail_triggered": True,
+                "guardrail_reason": "Report JSON parsing failed."
             }
-        ],
-        temperature=0
-    )
 
-    final_answer = response.choices[0].message.content.strip()
+        # -----------------------------------------------------
+        # Collect sources
+        # -----------------------------------------------------
 
-    all_sources = []
+        all_sources = []
 
-    for result in agent_answers:
-        all_sources.extend(
-            result.get("sources", [])
-        )
+        for result in agent_answers:
+            all_sources.extend(
+                result.get("sources", [])
+            )
 
-    unique_sources = []
-    seen_sources = set()
+        unique_sources = []
+        seen_sources = set()
 
-    for source in all_sources:
+        for source in all_sources:
 
-        source_key = (
-            source.get("document_id"),
-            source.get("page_number")
-        )
+            source_key = (
+                source.get("document_id"),
+                source.get("page_number")
+            )
 
-        if source_key not in seen_sources:
-            seen_sources.add(source_key)
-            unique_sources.append(source)
+            if source_key not in seen_sources:
 
-    retrieved_evidence = [
-    {
-        "agent": result.get("agent"),
-        "chunks": result.get("evidence", [])
-    }
-    for result in agent_answers
-]
-    print("\nDEBUG retrieved_evidence:")
-    print(retrieved_evidence)
+                seen_sources.add(source_key)
+                unique_sources.append(source)
 
-    return {
-        **state,
-        "answer": final_answer,
-        "sources": unique_sources,
-        "retrieved_evidence": retrieved_evidence
-    }
+        retrieved_evidence = [
+            {
+                "agent": result.get("agent"),
+                "chunks": result.get("evidence", [])
+            }
+            for result in agent_answers
+        ]
+
+        return {
+            "report": report,
+
+            # Useful for frontend compatibility
+            "answer": report.get(
+                "executive_summary",
+                ""
+            ),
+
+            "sources": unique_sources,
+
+            "retrieved_evidence": retrieved_evidence,
+
+            "guardrail_triggered": False,
+
+            "guardrail_reason": None,
+
+            "synthesis_llm_metrics": {
+                "model": response["model"],
+                "provider": response["provider"],
+                "prompt_tokens": response["usage"]["prompt_tokens"],
+                "completion_tokens": response["usage"]["completion_tokens"],
+                "total_tokens": response["usage"]["total_tokens"],
+                "latency_seconds": response["latency_seconds"],
+                "attempts": response["attempts"]
+            }
+        }
 
 def route_question(state: DueDiligenceState) -> list[str]:
     """

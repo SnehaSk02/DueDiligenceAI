@@ -12,3 +12,4 @@ sentence-transformers
 qdrant-client
 groq
 langgraph langchain-groq
+google-genai

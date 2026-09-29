@@ -16,3 +16,15 @@ class DueDiligenceRequest(BaseModel):
     )
 
     due_diligence_type: DueDiligenceType
+
+class AgentFinding(BaseModel):
+    finding: str = Field(
+        ...,
+        min_length=1,
+        description="Factual finding based on retrieved evidence."
+    )
+
+    supported: bool = Field(
+        ...,
+        description="Whether the finding is supported by retrieved evidence."
+    )

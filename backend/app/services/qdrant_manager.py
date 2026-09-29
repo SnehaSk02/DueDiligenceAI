@@ -53,6 +53,11 @@ class QdrantManager:
                 url=url,
                 **kwargs
             )
+        if response.status_code >= 400:
+            print("\n========== QDRANT ERROR ==========")
+            print("Status:", response.status_code)
+            print("Response:", response.text)
+            print("==================================\n")
 
         response.raise_for_status()
         return response.json()
@@ -174,33 +179,38 @@ class QdrantManager:
         Create payload indexes required for
         filtered retrieval.
         """
+        indexes = [
+        ("case_id", "integer"),
+        ("document_id", "integer")
+    ]
+        for field_name, field_schema in indexes:
 
-        try:
-            self._request(
-                "PUT",
-                f"/collections/{self.collection_name}/index",
-                params={
-                    "wait": "true"
-                },
-                json={
-                    "field_name": "case_id",
-                    "field_schema": "integer"
-                }
-            )
-
-            print(
-                "Payload index for 'case_id' "
-                "created successfully."
-            )
-
-        except httpx.HTTPStatusError as e:
-            if e.response.status_code in (400, 409):
-                print(
-                    "Payload index for 'case_id' "
-                    "already exists."
+            try:
+                self._request(
+                    "PUT",
+                    f"/collections/{self.collection_name}/index",
+                    params={
+                        "wait": "true"
+                    },
+                    json={
+                        "field_name": field_name,
+                        "field_schema": field_schema
+                    }
                 )
-            else:
-                raise
+
+                print(
+                   f"Payload index for '{field_name}' "
+                    f"created successfully."
+                )
+
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code in (400, 409):
+                    print(
+                        f"Payload index for '{field_name}' "
+                        "already exists."
+                    )
+                else:
+                    raise
 
     def search_chunks(
         self,
@@ -382,3 +392,25 @@ class QdrantManager:
 #         ).points
 
 #         return results
+    def delete_document_chunks(self, document_id: int):
+        self._request(
+            "POST",
+            f"/collections/{self.collection_name}/points/delete",
+            params={"wait": "true"},
+            json={
+                "filter": {
+                    "must": [
+                        {
+                            "key": "document_id",
+                            "match": {
+                                "value": document_id
+                            }
+                        }
+                    ]
+                }
+            }
+        )
+
+        print(
+            f"Deleted Qdrant chunks for document_id={document_id}"
+        )
