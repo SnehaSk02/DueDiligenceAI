@@ -11,5 +11,6 @@ langchain-text-splitters
 sentence-transformers
 qdrant-client
 groq
-langgraph langchain-groq
+langgraph 
+langchain-groq
 google-genai
