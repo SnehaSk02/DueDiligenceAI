@@ -5,8 +5,6 @@ from backend.app.database.session import get_db
 from backend.app.models.case import DueDiligenceCase
 from backend.app.models.documents import Document
 from backend.app.schemas import DueDiligenceRequest
-from backend.app.services.indexing_service import DocumentIndexingService
-from backend.app.services.rag_services import RAGService
 from backend.app.services.guardrails.security_guardrails import (
     validate_filename,
     validate_file_extension,
@@ -17,7 +15,6 @@ from backend.app.services.guardrails.security_guardrails import (
     validate_user_input,
     validate_required_environment_variables
 )
-from backend.app.agents.graph import due_diligence_graph
 import os
 import shutil
 
@@ -68,6 +65,7 @@ def upload_document(
     # ======================================================
     # 1. SECURITY VALIDATION + FILE SAVING
     # ======================================================
+    from backend.app.services.indexing_service import DocumentIndexingService
 
     try:
         validate_case_access(requested_case_id=case_id,
@@ -242,6 +240,8 @@ def ask_question(
     question: str,
     db:Session = Depends(get_db)
 ):
+    from backend.app.services.rag_services import RAGService
+
     rag_service = RAGService()
 
     try:
@@ -280,6 +280,7 @@ def generate_report(
     # --------------------------------------------------
     # 2. Check that the case exists
     # --------------------------------------------------
+    from backend.app.agents.graph import due_diligence_graph
 
     case = (
         db.query(DueDiligenceCase)
