@@ -227,6 +227,7 @@ async def upload_document(
         f"filename={file.filename} | type={document_type}",
         flush=True
     )
+    print("1. Endpoint reached", flush=True)
 
     content = await file.read()
 
@@ -239,29 +240,38 @@ async def upload_document(
         "cases",
         str(case_id)
     )
+    print(f"3. Creating directory: {upload_dir}", flush=True)
 
     os.makedirs(upload_dir, exist_ok=True)
+    print("4. Directory ready", flush=True)
 
     file_path = os.path.join(
         upload_dir,
         file.filename
     )
+    print(f"5. Saving to: {file_path}", flush=True)
 
     with open(file_path, "wb") as buffer:
         buffer.write(content)
 
-    print(
-        f"FILE SAVED | path={file_path}",
-        flush=True
-    )
+    print("6. File saved successfully", flush=True)
 
     return {
-        "message": "Render received and saved PDF",
-        "case_id": case_id,
-        "filename": file.filename,
-        "file_size": len(content),
-        "file_path": file_path
-    }
+    "message": "File saved successfully",
+    "filename": file.filename,
+    "file_size": len(content)}
+    # print(
+    #     f"FILE SAVED | path={file_path}",
+    #     flush=True
+    # )
+
+    # return {
+    #     "message": "Render received and saved PDF",
+    #     "case_id": case_id,
+    #     "filename": file.filename,
+    #     "file_size": len(content),
+    #     "file_path": file_path
+    # }
 
 @app.get("/api/v1/due-diligence/{case_id}/documents")
 def get_documents(
