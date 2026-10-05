@@ -55,166 +55,192 @@ def start_due_diligence(request: DueDiligenceRequest,
         "updated_time":case.updated_at
     }
 
+# @app.post("/api/v1/due-diligence/{case_id}/documents")
+# def upload_document(
+#     case_id: int,
+#     document_type: str,
+#     file: UploadFile = File(...),
+#     db: Session = Depends(get_db)
+# ):
+#     print(
+#         f"UPLOAD ENDPOINT REACHED | case_id={case_id} | filename={file.filename}",
+#         flush=True
+#     )
+#     # ======================================================
+#     # 1. SECURITY VALIDATION + FILE SAVING
+#     # ======================================================
+#     from backend.app.services.indexing_service import DocumentIndexingService
+
+#     try:
+#         validate_case_access(requested_case_id=case_id,
+#                              authenticated_case_id=case_id)
+
+#         # Validate filename
+#         filename = validate_filename(file.filename)
+
+#         existing_document = db.query(Document).filter(
+#             Document.case_id == case_id,
+#             Document.filename == filename
+#         ).first()
+
+#         if existing_document:
+#             raise HTTPException(
+#                 status_code=409,
+#                 detail=f"The file '{filename}' has already been uploaded for this case. "
+#             "Please check the file and try again."
+#             )
+
+#         # Validate extension
+#         validate_file_extension(filename)
+
+#         # Validate file size
+#         file.file.seek(0, os.SEEK_END)
+#         file_size = file.file.tell()
+#         file.file.seek(0)
+
+#         validate_file_size(file_size)
+
+#         # Create case-specific directory
+#         upload_dir = os.path.join(
+#             "uploads",
+#             "cases",
+#             str(case_id)
+#         )
+
+#         os.makedirs(
+#             upload_dir,
+#             exist_ok=True
+#         )
+
+#         # Build safe path
+#         file_path = build_safe_upload_path(
+#             upload_dir,
+#             filename
+#         )
+
+#         # Save file
+#         with open(file_path, "wb") as buffer:
+#             shutil.copyfileobj(
+#                 file.file,
+#                 buffer
+#             )
+
+#         # Validate actual PDF signature
+#         validate_pdf_signature(
+#             str(file_path)
+#         )
+
+#         # Create database record
+#         document = Document(
+#             case_id=case_id,
+#             filename=filename,
+#             document_type=document_type,
+#             file_path=str(file_path),
+#             status="uploaded"
+#         )
+
+#         db.add(document)
+#         db.commit()
+#         db.refresh(document)
+#     except HTTPException:
+#         raise
+
+#     except ValueError as exc:
+
+#         # Security validation failure
+#         raise HTTPException(
+#             status_code=400,
+#             detail=str(exc)
+#         )
+
+#     except Exception:
+
+#         # Remove partially saved file
+#         if (
+#             "file_path" in locals()
+#             and os.path.exists(file_path)
+#         ):
+#             os.remove(file_path)
+
+#         db.rollback()
+
+#         raise HTTPException(
+#             status_code=500,
+#             detail="Document upload failed."
+#         )
+
+#     # ======================================================
+#     # 2. DOCUMENT INDEXING
+#     # ======================================================
+
+#     try:
+
+#         indexing_service = DocumentIndexingService()
+
+#         indexing_result = indexing_service.index_document(
+#             file_path=str(file_path),
+#             case_id=case_id,
+#             document_id=document.id,
+#             document_type=document_type
+#         )
+
+#         # Indexing successful
+#         document.status = "indexed"
+
+#         db.commit()
+#         db.refresh(document)
+
+#     except Exception as exc:
+
+#         # File was uploaded and DB record exists,
+#         # but indexing failed.
+#         document.status = "indexing_failed"
+
+#         db.commit()
+
+#         raise HTTPException(
+#             status_code=500,
+#             detail=f"Document indexing failed:{exc}"
+#         )
+
+#     # ======================================================
+#     # 3. RESPONSE
+#     # ======================================================
+
+#     return {
+#         "message": "Document uploaded and indexed successfully",
+#         "document_id": document.id,
+#         "case_id": document.case_id,
+#         "filename": document.filename,
+#         "document_type": document.document_type,
+#         "status": document.status,
+#         "indexing": indexing_result
+#     }
 @app.post("/api/v1/due-diligence/{case_id}/documents")
-def upload_document(
+async def upload_document(
     case_id: int,
     document_type: str,
-    file: UploadFile = File(...),
-    db: Session = Depends(get_db)
+    file: UploadFile = File(...)
 ):
     print(
-        f"UPLOAD ENDPOINT REACHED | case_id={case_id} | filename={file.filename}",
+        f"UPLOAD REACHED | case={case_id} | "
+        f"filename={file.filename} | type={document_type}",
         flush=True
     )
-    # ======================================================
-    # 1. SECURITY VALIDATION + FILE SAVING
-    # ======================================================
-    from backend.app.services.indexing_service import DocumentIndexingService
 
-    try:
-        validate_case_access(requested_case_id=case_id,
-                             authenticated_case_id=case_id)
+    content = await file.read()
 
-        # Validate filename
-        filename = validate_filename(file.filename)
-
-        existing_document = db.query(Document).filter(
-            Document.case_id == case_id,
-            Document.filename == filename
-        ).first()
-
-        if existing_document:
-            raise HTTPException(
-                status_code=409,
-                detail=f"The file '{filename}' has already been uploaded for this case. "
-            "Please check the file and try again."
-            )
-
-        # Validate extension
-        validate_file_extension(filename)
-
-        # Validate file size
-        file.file.seek(0, os.SEEK_END)
-        file_size = file.file.tell()
-        file.file.seek(0)
-
-        validate_file_size(file_size)
-
-        # Create case-specific directory
-        upload_dir = os.path.join(
-            "uploads",
-            "cases",
-            str(case_id)
-        )
-
-        os.makedirs(
-            upload_dir,
-            exist_ok=True
-        )
-
-        # Build safe path
-        file_path = build_safe_upload_path(
-            upload_dir,
-            filename
-        )
-
-        # Save file
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(
-                file.file,
-                buffer
-            )
-
-        # Validate actual PDF signature
-        validate_pdf_signature(
-            str(file_path)
-        )
-
-        # Create database record
-        document = Document(
-            case_id=case_id,
-            filename=filename,
-            document_type=document_type,
-            file_path=str(file_path),
-            status="uploaded"
-        )
-
-        db.add(document)
-        db.commit()
-        db.refresh(document)
-    except HTTPException:
-        raise
-
-    except ValueError as exc:
-
-        # Security validation failure
-        raise HTTPException(
-            status_code=400,
-            detail=str(exc)
-        )
-
-    except Exception:
-
-        # Remove partially saved file
-        if (
-            "file_path" in locals()
-            and os.path.exists(file_path)
-        ):
-            os.remove(file_path)
-
-        db.rollback()
-
-        raise HTTPException(
-            status_code=500,
-            detail="Document upload failed."
-        )
-
-    # ======================================================
-    # 2. DOCUMENT INDEXING
-    # ======================================================
-
-    try:
-
-        indexing_service = DocumentIndexingService()
-
-        indexing_result = indexing_service.index_document(
-            file_path=str(file_path),
-            case_id=case_id,
-            document_id=document.id,
-            document_type=document_type
-        )
-
-        # Indexing successful
-        document.status = "indexed"
-
-        db.commit()
-        db.refresh(document)
-
-    except Exception as exc:
-
-        # File was uploaded and DB record exists,
-        # but indexing failed.
-        document.status = "indexing_failed"
-
-        db.commit()
-
-        raise HTTPException(
-            status_code=500,
-            detail=f"Document indexing failed:{exc}"
-        )
-
-    # ======================================================
-    # 3. RESPONSE
-    # ======================================================
+    print(
+        f"FILE RECEIVED | size={len(content)} bytes",
+        flush=True
+    )
 
     return {
-        "message": "Document uploaded and indexed successfully",
-        "document_id": document.id,
-        "case_id": document.case_id,
-        "filename": document.filename,
-        "document_type": document.document_type,
-        "status": document.status,
-        "indexing": indexing_result
+        "message": "Render received the file",
+        "case_id": case_id,
+        "filename": file.filename,
+        "document_type": document_type,
+        "file_size": len(content)
     }
 @app.get("/api/v1/due-diligence/{case_id}/documents")
 def get_documents(
