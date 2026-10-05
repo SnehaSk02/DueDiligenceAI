@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends, UploadFile, File,HTTPException
 from sqlalchemy.orm import Session
-
+import asyncio
 from backend.app.database.session import get_db
 from backend.app.models.case import DueDiligenceCase
 from backend.app.models.documents import Document
@@ -234,6 +234,9 @@ async def upload_document(
         f"FILE RECEIVED | size={len(content)} bytes",
         flush=True
     )
+
+    await asyncio.sleep(10)
+
 
     return {
         "message": "Render received the file",
