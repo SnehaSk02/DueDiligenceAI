@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, UploadFile, File,HTTPException
 from sqlalchemy.orm import Session
 import asyncio
+import time
 from backend.app.database.session import get_db
 from backend.app.models.case import DueDiligenceCase
 from backend.app.models.documents import Document
@@ -220,7 +221,8 @@ def start_due_diligence(request: DueDiligenceRequest,
 async def upload_document(
     case_id: int,
     document_type: str,
-    file: UploadFile = File(...)
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db)
 ):
     print(
         f"UPLOAD REACHED | case={case_id} | "
@@ -228,7 +230,7 @@ async def upload_document(
         flush=True
     )
     print("1. Endpoint reached", flush=True)
-
+    time.sleep(2)
     content = await file.read()
 
     print(
@@ -241,25 +243,53 @@ async def upload_document(
         str(case_id)
     )
     print(f"3. Creating directory: {upload_dir}", flush=True)
-
+    time.sleep(2)
     os.makedirs(upload_dir, exist_ok=True)
     print("4. Directory ready", flush=True)
-
+    time.sleep(2)
     file_path = os.path.join(
         upload_dir,
         file.filename
     )
     print(f"5. Saving to: {file_path}", flush=True)
-
+    time.sleep(2)
     with open(file_path, "wb") as buffer:
         buffer.write(content)
 
     print("6. File saved successfully", flush=True)
+    time.sleep(2)
+    document = Document(
+    case_id=case_id,
+    filename=file.filename,
+    document_type=document_type,
+    file_path=str(file_path),
+    status="uploaded"
+)
 
+    print("7. Document object created", flush=True)
+    time.sleep(2)
+
+    db.add(document)
+
+    print("8. About to commit document", flush=True)
+    time.sleep(2)
+    db.commit()
+
+    print("9. Document committed", flush=True)
+    time.sleep(2)
+    db.refresh(document)
+
+    print(
+    f"10. Document refreshed | id={document.id}",
+    flush=True
+)
+    time.sleep(2)
     return {
-    "message": "File saved successfully",
-    "filename": file.filename,
-    "file_size": len(content)}
+    "message": "File saved and document created",
+    "document_id": document.id,
+    "filename": document.filename,
+    "status": document.status
+}
     # print(
     #     f"FILE SAVED | path={file_path}",
     #     flush=True
