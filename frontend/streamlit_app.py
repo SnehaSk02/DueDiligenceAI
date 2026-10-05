@@ -510,7 +510,7 @@ def api_get(endpoint: str):
 
         response = requests.get(
             f"{API_URL}{endpoint}",
-            timeout=30
+            timeout=120
         )
 
         if response.status_code >= 400:
