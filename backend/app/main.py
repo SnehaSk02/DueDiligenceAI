@@ -62,6 +62,10 @@ def upload_document(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
 ):
+    print(
+        f"UPLOAD ENDPOINT REACHED | case_id={case_id} | filename={file.filename}",
+        flush=True
+    )
     # ======================================================
     # 1. SECURITY VALIDATION + FILE SAVING
     # ======================================================
