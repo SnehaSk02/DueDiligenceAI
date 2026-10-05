@@ -234,17 +234,35 @@ async def upload_document(
         f"FILE RECEIVED | size={len(content)} bytes",
         flush=True
     )
+    upload_dir = os.path.join(
+        "uploads",
+        "cases",
+        str(case_id)
+    )
 
-    await asyncio.sleep(10)
+    os.makedirs(upload_dir, exist_ok=True)
 
+    file_path = os.path.join(
+        upload_dir,
+        file.filename
+    )
+
+    with open(file_path, "wb") as buffer:
+        buffer.write(content)
+
+    print(
+        f"FILE SAVED | path={file_path}",
+        flush=True
+    )
 
     return {
-        "message": "Render received the file",
+        "message": "Render received and saved PDF",
         "case_id": case_id,
         "filename": file.filename,
-        "document_type": document_type,
-        "file_size": len(content)
+        "file_size": len(content),
+        "file_path": file_path
     }
+
 @app.get("/api/v1/due-diligence/{case_id}/documents")
 def get_documents(
     case_id: int,
