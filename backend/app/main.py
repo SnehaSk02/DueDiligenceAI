@@ -186,7 +186,7 @@ def upload_document(
         db.commit()
         db.refresh(document)
 
-    except Exception:
+    except Exception as exc:
 
         # File was uploaded and DB record exists,
         # but indexing failed.
@@ -196,7 +196,7 @@ def upload_document(
 
         raise HTTPException(
             status_code=500,
-            detail="Document indexing failed."
+            detail=f"Document indexing failed:{exc}"
         )
 
     # ======================================================
