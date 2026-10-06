@@ -224,6 +224,7 @@ async def upload_document(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
 ):
+    print("========== UPLOAD FUNCTION STARTED ==========", flush=True)
     print(
         f"UPLOAD REACHED | case={case_id} | "
         f"filename={file.filename} | type={document_type}",
@@ -258,6 +259,26 @@ async def upload_document(
 
     print("6. File saved successfully", flush=True)
     time.sleep(2)
+    print("A: before duplicate check", flush=True)
+
+    existing_document = db.query(Document).filter(
+    Document.case_id == case_id,
+    Document.filename == file.filename
+).first()
+
+    print(
+    f"B: duplicate check completed | result={existing_document}",
+    flush=True
+)
+
+    if existing_document:
+        raise HTTPException(
+            status_code=409,
+        detail=f"The file '{file.filename}' has already been uploaded for this case."
+    )
+
+    print("C: creating Document object", flush=True)
+
     document = Document(
     case_id=case_id,
     filename=file.filename,
@@ -266,21 +287,20 @@ async def upload_document(
     status="uploaded"
 )
 
-    print("7. Document object created", flush=True)
-    time.sleep(2)
+    print("D: Document object created", flush=True)
 
     db.add(document)
 
-    print("8. About to commit document", flush=True)
-    time.sleep(2)
+    print("E: db.add completed", flush=True)
+
     db.commit()
 
-    print("9. Document committed", flush=True)
-    time.sleep(2)
+    print("F: db.commit completed", flush=True)
+
     db.refresh(document)
 
     print(
-    f"10. Document refreshed | id={document.id}",
+    f"G: document refreshed | id={document.id}",
     flush=True
 )
     time.sleep(2)
