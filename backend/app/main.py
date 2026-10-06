@@ -16,6 +16,7 @@ from backend.app.services.guardrails.security_guardrails import (
     validate_user_input,
     validate_required_environment_variables
 )
+from backend.app.services.indexing_service import DocumentIndexingService
 import os
 import shutil
 
@@ -70,7 +71,7 @@ def upload_document(
     # ======================================================
     # 1. SECURITY VALIDATION + FILE SAVING
     # ======================================================
-    from backend.app.services.indexing_service import DocumentIndexingService
+    # from backend.app.services.indexing_service import DocumentIndexingService
 
     try:
         validate_case_access(requested_case_id=case_id,
