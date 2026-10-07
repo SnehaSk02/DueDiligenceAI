@@ -1,8 +1,8 @@
 import streamlit as st
 import requests
 from typing import Dict,Any,List 
-API_URL = "https://duediligenceai.onrender.com"
-# API_URL = "http://127.0.0.1:8000"
+# API_URL = "https://duediligenceai.onrender.com"
+API_URL = "http://127.0.0.1:8000"
 st.write("Backend URL:", API_URL)
 
 st.set_page_config(page_title="DueDiligenceAI",page_icon="🔎", layout="wide", initial_sidebar_state="expanded")
@@ -945,8 +945,9 @@ with tab_documents:
                 "Choose a PDF document",
                 type=["pdf"],
                 help=(
-                    "PDF documents are validated, extracted, "
-                    "chunked, embedded and indexed in Qdrant."
+                    "PDF documents are securely uploaded first. "
+                    "A background indexing worker then extracts, "
+                    "chunks, embeds and indexes the document in Qdrant."
                 ),
                 key="document_uploader"
             )
@@ -977,7 +978,7 @@ with tab_documents:
         else:
             final_document_type = document_type    
         if st.button(
-                "⬆️ Upload & Index Document",
+                "⬆️ Upload Document",
                 use_container_width=True,
                 disabled=uploaded_file is None
             ):
@@ -993,7 +994,7 @@ with tab_documents:
                     try:
 
                         with st.spinner(
-                            "Processing document..."
+                            "Uploading document to secure storage..."
                         ):
 
                             files = {
@@ -1057,7 +1058,8 @@ with tab_documents:
         except Exception:
 
             documents = st.session_state.documents
-
+        if st.button("🔄 Refresh Document Status",use_container_width=True):
+            st.rerun()
         st.markdown(
             '<div class="gradient-divider"></div>',
             unsafe_allow_html=True
@@ -1100,16 +1102,20 @@ with tab_documents:
                         '</span>'
                     )
 
-                elif status in [
-                    "uploaded",
-                    "processing"
-                ]:
+                elif status == "uploaded":
 
                     status_html = (
                         '<span class="status-warning">'
-                        '● PROCESSING'
+                        '● QUEUED'
                         '</span>'
                     )
+
+                elif status == "indexing":
+                    status_html = (
+                        '<span class="status-warning">'
+                        '● INDEXING'
+                        '</span>')
+
 
                 else:
 
@@ -1177,55 +1183,65 @@ with tab_report:
         # ====================================================
         # GENERATE REPORT
         # ====================================================
+        indexed_documents = [
+            document
+            for document in st.session_state.documents
+            if document.get("status") == "indexed"
+        ]
 
-        if st.button(
+        if not indexed_documents:
+
+            st.warning(
+                "Please wait until at least one document is indexed "
+                "before generating the due-diligence report."
+            )
+        else:
+            if st.button(
             "✨ Generate Due-Diligence Report",
             type="primary",
-            use_container_width=True
-        ):
+            use_container_width=True):
+                try:
 
-            try:
-
-                with st.spinner(
+                    with st.spinner(
                     "Running multi-agent due-diligence analysis..."
                 ):
 
-                    result = api_post(
+                        result = api_post(
                         f"/api/v1/due-diligence/"
                         f"{st.session_state.case_id}/generate-report",
                     )
 
-                st.session_state.report = result.get(
+                    st.session_state.report = result.get(
                     "report"
                 )
 
-                st.session_state.report_type = result.get(
+                    st.session_state.report_type = result.get(
                     "report_type",
                     "full"
                 )
 
-                st.session_state.report_sources = result.get(
+                    st.session_state.report_sources = result.get(
                     "sources",
                     []
                 )
 
-                st.session_state.retrieved_evidence = result.get(
+                    st.session_state.retrieved_evidence = result.get(
                     "retrieved_evidence",
                     []
                 )
 
-                st.session_state.report_metrics = result.get(
+                    st.session_state.report_metrics = result.get(
                     "synthesis_llm_metrics",
                     {}
                 )
 
-                st.success(
+                    st.success(
                     "Due-diligence report generated successfully."
                 )
 
-            except Exception as e:
+                except Exception as e:
 
-                st.error(str(e))
+                    st.error(str(e))
 
         # ====================================================
         # DISPLAY REPORT
@@ -1597,7 +1613,7 @@ with tab_report:
 
                                 document_id = evidence.get("document_id")
 
-                                filename = document_lookup.get(str(document_id),f"Document #{document_id}")
+                                filename = document_lookup.get(document_id,f"Document #{document_id}")
 
                                 page_number = evidence.get("page_number","N/A")
 
@@ -1796,247 +1812,263 @@ with tab_questions:
 
     else:
 
-        question = st.text_area(
-            "Your question",
-            placeholder=(
-                "Example: What are the major financial risks "
-                "mentioned in the documents?"
-            ),
-            height=120
-        )
+        indexed_documents = [
+            document
+            for document in st.session_state.documents
+            if document.get("status") == "indexed"
+        ]
 
-        if st.button(
-            "🧠 Ask AI",
-            type="primary",
-            use_container_width=True
-        ):
+        if not indexed_documents:
 
-            if not question.strip():
+            st.warning(
+                "Please wait until at least one document is indexed "
+                "before asking questions."
+            )
 
-                st.warning(
-                    "Please enter a question."
-                )
 
-            else:
+        else:
 
-                try:
+            question = st.text_area(
+                "Your question",
+                placeholder=(
+                    "Example: What are the major financial risks "
+                    "mentioned in the documents?"
+                ),
+                height=120
+            )
 
-                    with st.spinner(
-                        "Searching evidence and generating answer..."
-                    ):
+            if st.button(
+                "🧠 Ask AI",
+                type="primary",
+                use_container_width=True
+            ):
 
-                        # Your main.py expects question
-                        # as a query parameter.
-                        result = api_post(
-                            f"/api/v1/due-diligence/"
-                            f"{st.session_state.case_id}/ask",
+                if not question.strip():
 
-                            params={
-                                "question":
-                                    question.strip()
-                            }
+                    st.warning(
+                        "Please enter a question."
+                    )
+
+                else:
+
+                    try:
+
+                        with st.spinner(
+                            "Searching evidence and generating answer..."
+                        ):
+
+                            # Your main.py expects question
+                            # as a query parameter.
+                            result = api_post(
+                                f"/api/v1/due-diligence/"
+                                f"{st.session_state.case_id}/ask",
+
+                                params={
+                                    "question":
+                                        question.strip()
+                                }
+                            )
+
+                        st.session_state.last_question = question
+
+                        st.session_state.last_answer = result.get(
+                            "answer",
+                            ""
                         )
 
-                    st.session_state.last_question = question
+                        st.session_state.last_sources = result.get(
+                            "sources",
+                            []
+                        )
 
-                    st.session_state.last_answer = result.get(
-                        "answer",
-                        ""
-                    )
+                    except Exception as e:
 
-                    st.session_state.last_sources = result.get(
-                        "sources",
-                        []
-                    )
-
-                except Exception as e:
-
-                    st.error(str(e))
+                        st.error(str(e))
 
         # ====================================================
         # ANSWER
         # ====================================================
 
-        if st.session_state.last_answer:
+            if st.session_state.last_answer:
 
-            st.markdown(
-                '<div class="gradient-divider"></div>',
-                unsafe_allow_html=True
-            )
+                st.markdown(
+                    '<div class="gradient-divider"></div>',
+                    unsafe_allow_html=True
+                )
 
-            st.markdown(
-                f"""
-                <div style="
-                    color:#94a3b8;
-                    font-size:0.8rem;
-                    text-transform:uppercase;
-                    letter-spacing:0.7px;
-                    margin-bottom:0.5rem;
-                ">
-                    Your Question
-                </div>
-                <div style="
-                    color:#c4b5fd;
-                    font-size:1.05rem;
-                    font-weight:700;
-                    margin-bottom:1rem;
-                ">
-                    {st.session_state.last_question}
-                </div>
-                <div class="chat-answer">
+                st.markdown(
+                    f"""
                     <div style="
-                        color:#a5b4fc;
-                        font-weight:750;
-                        margin-bottom:0.6rem;
+                        color:#94a3b8;
+                        font-size:0.8rem;
+                        text-transform:uppercase;
+                        letter-spacing:0.7px;
+                        margin-bottom:0.5rem;
                     ">
-                        🤖 AI Analysis
+                        Your Question
                     </div>
-                    {st.session_state.last_answer}
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+                    <div style="
+                        color:#c4b5fd;
+                        font-size:1.05rem;
+                        font-weight:700;
+                        margin-bottom:1rem;
+                    ">
+                        {st.session_state.last_question}
+                    </div>
+                    <div class="chat-answer">
+                        <div style="
+                            color:#a5b4fc;
+                            font-weight:750;
+                            margin-bottom:0.6rem;
+                        ">
+                            🤖 AI Analysis
+                        </div>
+                        {st.session_state.last_answer}
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-            # =================================================
-            # EVIDENCE & CITATIONS
-            # =================================================
+                # =================================================
+                # EVIDENCE & CITATIONS
+                # =================================================
 
-            st.markdown(
-                '<div class="gradient-divider"></div>',
-                unsafe_allow_html=True
-            )
+                st.markdown(
+                    '<div class="gradient-divider"></div>',
+                    unsafe_allow_html=True
+                )
 
-            st.markdown(
-                "### 📚 Evidence & Citations"
-            )
+                st.markdown(
+                    "### 📚 Evidence & Citations"
+                )
 
-            sources = st.session_state.last_sources
+                sources = st.session_state.last_sources
 
-            if sources:
+                if sources:
 
-                # Build a lookup for document filenames
-                document_lookup = {}
+                    # Build a lookup for document filenames
+                    document_lookup = {}
 
-                for document in st.session_state.documents:
+                    for document in st.session_state.documents:
 
-                    if isinstance(document, dict):
+                        if isinstance(document, dict):
 
-                        document_id = document.get("id")
+                            document_id = document.get("document_id")
 
-                        if document_id is not None:
+                            if document_id is not None:
 
-                            document_lookup[
-                                document_id
-                            ] = document.get(
-                                "filename",
-                                f"Document #{document_id}"
-                            )
+                                document_lookup[
+                                    document_id
+                                ] = document.get(
+                                    "filename",
+                                    f"Document #{document_id}"
+                                )
 
-                for index, source in enumerate(
-                    sources,
-                    start=1
-                ):
-
-                    if not isinstance(source, dict):
-                        continue
-
-                    # document_id = source.get(
-                    #     "document_id"
-                    # )
-
-                    document_type = source.get(
-                        "document_type",
-                        "Unknown"
-                    )
-
-                    page_number = source.get(
-                        "page_number",
-                        "N/A"
-                    )
-
-                    # content_type = source.get(
-                    #     "content_type",
-                    #     "Unknown"
-                    # )
-
-                    score = source.get(
-                        "score"
-                    )
-                    rerank_score = source.get( "rerank_score" )
-                    evidence_text = source.get( "text", "" )
-
-                    # filename = document_lookup.get(
-                    #     document_id,
-                    #     f"Document #{document_id}"
-                    # )
-
-                    # Format semantic score
-                    if isinstance(score, (int, float)):
-
-                        score_display = f"{score:.3f}"
-
-                    else:
-
-                        score_display = "N/A"
-
-                    with st.expander(
-                        f"📄 Source {index}"
+                    for index, source in enumerate(
+                        sources,
+                        start=1
                     ):
 
-                        st.markdown(
-                            f"""
-                                <div style="
-                                    color:#94a3b8;
-                                    font-size:0.82rem;
-                                    line-height:1.7;
-                                ">
-                                    <strong>Document Type:</strong>
-                                    {document_type}
-                                    &nbsp; | &nbsp;
-                                    <strong>Page:</strong>
-                                    {page_number}
-                                    <br>
-                                    <strong>Document ID:</strong>
-                                    {document_id}
-                                    &nbsp; | &nbsp;
-                                    <strong>Semantic Score:</strong>
-                                    {score_display}
-                                </div>
-                            </div>
-                            """,
-                            unsafe_allow_html=True
+                        if not isinstance(source, dict):
+                            continue
+
+                        document_id = source.get(
+                            "document_id"
                         )
 
-                        st.markdown(
-                            "**Evidence used for this answer:**"
+                        document_type = source.get(
+                            "document_type",
+                            "Unknown"
                         )
-                        if evidence_text:
-                             st.markdown( f""" 
-                             <div style="
-                               background:rgba(15,23,42,0.65);
-                                border:1px solid rgba(148,163,184,0.15);
-                                border-radius:10px;
-                                padding:1rem;
-                                margin-top:0.5rem;
-                                color:#cbd5e1;
-                                font-size:0.9rem;
-                                line-height:1.7;
-                                ">
-                                    {evidence_text}
-                                    </div>
-                                    """,
-                                    unsafe_allow_html=True ) 
+
+                        page_number = source.get(
+                            "page_number",
+                            "N/A"
+                        )
+
+                        # content_type = source.get(
+                        #     "content_type",
+                        #     "Unknown"
+                        # )
+
+                        score = source.get(
+                            "score"
+                        )
+                        rerank_score = source.get( "rerank_score" )
+                        evidence_text = source.get( "text", "" )
+
+                        # filename = document_lookup.get(
+                        #     document_id,
+                        #     f"Document #{document_id}"
+                        # )
+
+                        # Format semantic score
+                        if isinstance(score, (int, float)):
+
+                            score_display = f"{score:.3f}"
+
                         else:
-                            st.info( "Retrieved evidence text is not available " "for this source." )
 
-                        # The current /ask endpoint only returns
-                        # source metadata, not the chunk text.
-                        # Therefore show the citation metadata here.
-            else:
+                            score_display = "N/A"
 
-                st.info(
-                    "Evidence not available for this question."
-                )
+                        with st.expander(
+                            f"📄 Source {index}"
+                        ):
+
+                            st.markdown(
+                                f"""
+                                    <div style="
+                                        color:#94a3b8;
+                                        font-size:0.82rem;
+                                        line-height:1.7;
+                                    ">
+                                        <strong>Document Type:</strong>
+                                        {document_type}
+                                        &nbsp; | &nbsp;
+                                        <strong>Page:</strong>
+                                        {page_number}
+                                        <br>
+                                        <strong>Document ID:</strong>
+                                        {document_id}
+                                        &nbsp; | &nbsp;
+                                        <strong>Semantic Score:</strong>
+                                        {score_display}
+                                    </div>
+                                </div>
+                                """,
+                                unsafe_allow_html=True
+                            )
+
+                            st.markdown(
+                                "**Evidence used for this answer:**"
+                            )
+                            if evidence_text:
+                                st.markdown( f""" 
+                                <div style="
+                                background:rgba(15,23,42,0.65);
+                                    border:1px solid rgba(148,163,184,0.15);
+                                    border-radius:10px;
+                                    padding:1rem;
+                                    margin-top:0.5rem;
+                                    color:#cbd5e1;
+                                    font-size:0.9rem;
+                                    line-height:1.7;
+                                    ">
+                                        {evidence_text}
+                                        </div>
+                                        """,
+                                        unsafe_allow_html=True ) 
+                            else:
+                                st.info( "Retrieved evidence text is not available " "for this source." )
+
+                            # The current /ask endpoint only returns
+                            # source metadata, not the chunk text.
+                            # Therefore show the citation metadata here.
+                else:
+
+                    st.info(
+                        "Evidence not available for this question."
+                    )
 
 
 # ============================================================

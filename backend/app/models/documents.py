@@ -28,3 +28,4 @@ class Document(Base):
     
     case = relationship("DueDiligenceCase", back_populates="documents")
 
+    storage_path:Mapped[str | None]= mapped_column(String(500), nullable=True)

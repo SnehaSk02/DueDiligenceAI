@@ -14,3 +14,4 @@ groq
 langgraph 
 langchain-groq
 google-genai
+supabase

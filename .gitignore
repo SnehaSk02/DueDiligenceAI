@@ -14,3 +14,10 @@ Thumbs.db
 *.log
 
 backend/tests/*
+due_diligence_backup.sql
+due_diligence_backup_clean.sql
+due_diligence_backup_final.sql
+due_diligence_backup_utf8.sql
+backend/cleanup_test_vectors.py
+backend/test_rag_document_40.py
+backend/test_supabase.py

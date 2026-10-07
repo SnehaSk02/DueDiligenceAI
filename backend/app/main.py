@@ -17,6 +17,7 @@ from backend.app.services.guardrails.security_guardrails import (
     validate_required_environment_variables
 )
 from backend.app.services.indexing_service import DocumentIndexingService
+from backend.app.services.storage_services import upload_pdf
 import os
 import shutil
 
@@ -64,8 +65,6 @@ def upload_document(
     file: UploadFile = File(...),
     db: Session = Depends(get_db)
 ):
-    file_path = None
-
     try:
         # -----------------------------------------
         # 1. Check case
@@ -132,33 +131,15 @@ def upload_document(
             )
 
         # -----------------------------------------
-        # 5. Save PDF
-        # -----------------------------------------
-        upload_dir = os.path.join(
-            "uploads",
-            "cases",
-            str(case_id)
-        )
-
-        os.makedirs(upload_dir, exist_ok=True)
-
-        file_path = os.path.join(
-            upload_dir,
-            filename
-        )
-
-        with open(file_path, "wb") as buffer:
-            buffer.write(content)
-
-        # -----------------------------------------
-        # 6. Create DB record
+        # 5. Create initial DB record
         # -----------------------------------------
         document = Document(
             case_id=case_id,
             filename=filename,
             document_type=document_type,
-            file_path=file_path,
-            status="uploaded"
+            file_path=None,
+            storage_path=None,
+            status="uploading"
         )
 
         db.add(document)
@@ -166,7 +147,64 @@ def upload_document(
         db.refresh(document)
 
         # -----------------------------------------
-        # 7. Return immediately
+        # 6. Build document-ID-based path
+        # -----------------------------------------
+        storage_path = (
+            f"cases/{case_id}/"
+            f"documents/{document.id}/"
+            f"{filename}"
+        )
+
+        # -----------------------------------------
+        # 7. Temporarily save PDF locally
+        # -----------------------------------------
+        temp_dir = "uploads"
+
+        os.makedirs(temp_dir, exist_ok=True)
+
+        temp_file_path = os.path.join(
+            temp_dir,
+            filename
+        )
+
+        with open(temp_file_path, "wb") as buffer:
+            buffer.write(content)
+
+        # -----------------------------------------
+        # 8. Upload to Supabase
+        # -----------------------------------------
+        try:
+            upload_pdf(
+                file_path=temp_file_path,
+                storage_path=storage_path
+            )
+
+        except Exception:
+            # Supabase upload failed
+            document.status = "upload_failed"
+            db.commit()
+
+            raise HTTPException(
+                status_code=500,
+                detail="Failed to upload document to storage."
+            )
+
+        finally:
+            # Remove temporary local copy
+            if os.path.exists(temp_file_path):
+                os.remove(temp_file_path)
+
+        # -----------------------------------------
+        # 9. Update DB record
+        # -----------------------------------------
+        document.storage_path = storage_path
+        document.status = "uploaded"
+
+        db.commit()
+        db.refresh(document)
+
+        # -----------------------------------------
+        # 10. Return
         # -----------------------------------------
         return {
             "message": "Document uploaded successfully",
@@ -174,6 +212,7 @@ def upload_document(
             "case_id": document.case_id,
             "filename": document.filename,
             "document_type": document.document_type,
+            "storage_path": document.storage_path,
             "status": document.status
         }
 
@@ -183,15 +222,115 @@ def upload_document(
     except Exception as exc:
         db.rollback()
 
-        if file_path and os.path.exists(file_path):
-            try:
-                os.remove(file_path)
-            except Exception:
-                pass
-
         raise HTTPException(
             status_code=500,
             detail=f"Document upload failed: {str(exc)}"
+        )
+@app.post("/api/v1/due-diligence/{case_id}/documents/{document_id}/index")
+def index_document(
+    case_id: int,
+    document_id: int,
+    db: Session = Depends(get_db)
+):
+    # Lazy import
+    from backend.app.services.indexing_service import (DocumentIndexingService)
+
+    # -----------------------------
+    # 1. Find document
+    # -----------------------------
+    document = (
+        db.query(Document)
+        .filter(
+            Document.id == document_id,
+            Document.case_id == case_id
+        )
+        .first()
+    )
+
+    if not document:
+        raise HTTPException(
+            status_code=404,
+            detail="Document not found."
+        )
+
+    # -----------------------------
+    # 2. Already indexed?
+    # -----------------------------
+    if document.status == "indexed":
+        return {
+            "message": "Document is already indexed.",
+            "document_id": document.id,
+            "status": document.status
+        }
+
+    # -----------------------------
+    # 3. Check PDF exists
+    # -----------------------------
+    if not os.path.exists(document.file_path):
+        document.status = "indexing_failed"
+        db.commit()
+
+        raise HTTPException(
+            status_code=404,
+            detail="Uploaded PDF file could not be found."
+        )
+
+    try:
+
+        # -----------------------------
+        # 4. Mark processing
+        # -----------------------------
+        document.status = "processing"
+        db.commit()
+
+        # -----------------------------
+        # 5. Run indexing
+        # -----------------------------
+        indexing_service = DocumentIndexingService()
+
+        indexing_result = indexing_service.index_document(
+            file_path=document.file_path,
+            case_id=case_id,
+            document_id=document.id,
+            document_type=document.document_type
+        )
+
+        # -----------------------------
+        # 6. Mark indexed
+        # -----------------------------
+        document.status = "indexed"
+        db.commit()
+        db.refresh(document)
+
+        return {
+            "message": "Document indexed successfully",
+            "document_id": document.id,
+            "case_id": case_id,
+            "filename": document.filename,
+            "status": document.status,
+            "indexing": indexing_result
+        }
+
+    except Exception as exc:
+
+        db.rollback()
+
+        document = (
+            db.query(Document)
+            .filter(
+                Document.id == document_id,
+                Document.case_id == case_id
+            )
+            .first()
+        )
+
+        if document:
+            document.status = "indexing_failed"
+            db.commit()
+
+        raise HTTPException(
+            status_code=500,
+            detail=f"Document indexing failed: {str(exc)}"
         )
     # print(
     #     f"UPLOAD ENDPOINT REACHED | case_id={case_id} | filename={file.filename}",
