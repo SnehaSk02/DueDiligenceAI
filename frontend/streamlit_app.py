@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
 from typing import Dict,Any,List 
-# API_URL = "https://duediligenceai.onrender.com"
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://duediligenceai.onrender.com"
 st.write("Backend URL:", API_URL)
 
 st.set_page_config(page_title="DueDiligenceAI",page_icon="🔎", layout="wide", initial_sidebar_state="expanded")
