@@ -279,6 +279,7 @@ def orchestrator(state: DueDiligenceState) -> DueDiligenceState:
     }
 
 def financial_agent(state: DueDiligenceState) -> DueDiligenceState:
+    print(">>> FINANCIAL AGENT START")
     rag_service = RAGService()
 
     due_diligence_type = state.get(
@@ -384,6 +385,7 @@ FINANCIAL SUBQUESTION:
         case_id=state["case_id"],
         top_k=5
     )
+    print(">>> FINANCIAL RETRIEVAL DONE:", len(retrieved_chunks))
 
     if not retrieved_chunks:
         return {
@@ -488,12 +490,14 @@ FINANCIAL SUBQUESTION:
         "supported": true
     }}
     """
+    print(">>> FINANCIAL LLM START")
 
     response = gateway.generate(
             prompt=prompt,
             temperature=0,
             response_format = {"type":"json_object"}
         )
+    print(">>> FINANCIAL LLM DONE")
 
     raw_output = response["content"].strip()
     validation_result = validate_agent_output(raw_output=raw_output,
@@ -538,6 +542,8 @@ FINANCIAL SUBQUESTION:
 
 
 def risk_agent(state: DueDiligenceState) -> DueDiligenceState:
+    print(">>> RISK AGENT START")
+
     rag_service = RAGService()
     due_diligence_type = state.get(
     "due_diligence_type",
@@ -626,6 +632,8 @@ RISK SUBQUESTION:
         case_id=state["case_id"],
         top_k=5
     )
+    print(">>> RISK RETRIEVAL DONE:", len(retrieved_chunks))
+
 
     if not retrieved_chunks:
         return {
@@ -731,12 +739,15 @@ RISK SUBQUESTION:
         "supported": true
     }}
     """
+    print(">>> RISK LLM START")
 
     response = gateway.generate(
         prompt=prompt,
         temperature=0,
         response_format = {"type":"json_object"}
             )
+    print(">>> RISK LLM DONE")
+
         
     raw_output = response["content"].strip()
     validation_result = validate_agent_output(raw_output=raw_output,
@@ -774,6 +785,8 @@ RISK SUBQUESTION:
     
 
 def general_agent(state: DueDiligenceState) -> DueDiligenceState:
+    print(">>> GENERAL AGENT START")
+
 
     rag_service = RAGService()
     due_diligence_type = state.get(
@@ -853,6 +866,8 @@ GENERAL DUE DILIGENCE SUBQUESTION:
         case_id=state["case_id"],
         top_k=5
     )
+    print(">>> GENERAL RETRIEVAL DONE:", len(retrieved_chunks))
+
 
     if not retrieved_chunks:
         return {
@@ -957,12 +972,14 @@ JSON FORMAT:
     "supported": true
 }}
 """
+    print(">>> GENERAL LLM START")
 
     response = gateway.generate(
         prompt=prompt,
         temperature=0,
         response_format={"type": "json_object"}
     )
+    print(">>> GENERAL LLM DONE")
 
     raw_output = response["content"].strip()
 
@@ -1148,12 +1165,14 @@ REPORT STRUCTURE:
 REPORT TYPE:
 {report_type}
 """
+        print(">>> SYNTHESIS LLM START")
 
         response = gateway.generate(
             prompt=prompt,
             temperature=0,
             response_format={"type": "json_object"}
         )
+        print(">>> SYNTHESIS LLM DONE")
 
         raw_output = response["content"].strip()
 

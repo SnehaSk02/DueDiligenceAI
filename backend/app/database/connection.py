@@ -18,7 +18,10 @@ DATABASE_URL = (
 )
 
 engine = create_engine(DATABASE_URL, echo=True) #echo = True shows the SQL queries executing in the terminal
-
+print("DB HOST:", DB_HOST)
+print("DB PORT:", DB_PORT)
+print("DB NAME:", DB_NAME)
+print("DB USER:", DB_USER)
 def test_database_connection():
     try:
         with engine.connect() as connection:
