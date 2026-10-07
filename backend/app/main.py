@@ -16,7 +16,6 @@ from backend.app.services.guardrails.security_guardrails import (
     validate_user_input,
     validate_required_environment_variables
 )
-from backend.app.services.indexing_service import DocumentIndexingService
 from backend.app.services.storage_services import upload_pdf
 import os
 import shutil
