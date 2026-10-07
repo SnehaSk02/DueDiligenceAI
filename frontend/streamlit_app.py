@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+from streamlit_autorefresh import st_autorefresh
 from typing import Dict,Any,List 
 API_URL = "https://duediligenceai.onrender.com"
 st.write("Backend URL:", API_URL)
@@ -1057,8 +1058,20 @@ with tab_documents:
         except Exception:
 
             documents = st.session_state.documents
-        if st.button("🔄 Refresh Document Status",use_container_width=True):
-            st.rerun()
+        # Check whether any document is still being processed
+        processing_documents = [
+            document
+            for document in st.session_state.documents
+            if document.get("status") in ["uploaded", "indexing", "processing"]
+        ]
+
+        # Auto-refresh every 5 seconds while processing
+        if processing_documents:
+            st_autorefresh(
+                interval=5000,
+                limit=None,
+                key="document_status_refresh"
+            )
         st.markdown(
             '<div class="gradient-divider"></div>',
             unsafe_allow_html=True
