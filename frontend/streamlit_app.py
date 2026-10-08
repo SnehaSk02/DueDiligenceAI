@@ -1216,16 +1216,20 @@ with tab_report:
             type="primary",
             use_container_width=True):
                 try:
+                    st.warning("DEBUG: Generate Report button was triggered")
+                    st.write("DEBUG Case ID:", st.session_state.case_id)
+
 
                     with st.spinner(
                     "Running multi-agent due-diligence analysis..."
                 ):
+                        st.write("DEBUG: About to call backend")
 
                         result = api_post(
                         f"/api/v1/due-diligence/"
                         f"{st.session_state.case_id}/generate-report",
                     )
-
+                        st.write("DEBUG: Backend response received")
                     st.session_state.report = result.get(
                     "report"
                 )
