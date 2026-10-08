@@ -458,6 +458,8 @@ def api_post(
 ):
 
     try:
+        full_url = f"{API_URL}{endpoint}"
+        print(">>> SENDING POST REQUEST TO:", full_url, flush=True)
 
         response = requests.post(
             f"{API_URL}{endpoint}",
@@ -466,6 +468,7 @@ def api_post(
             files=files,
             timeout=180
         )
+        print(">>> POST REQUEST COMPLETED", flush=True)
         print("DEBUG STATUS:", response.status_code)
         print("DEBUG RESPONSE:", response.text)
 
