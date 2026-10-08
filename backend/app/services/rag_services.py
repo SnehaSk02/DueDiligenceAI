@@ -1,9 +1,14 @@
 from typing import List, Dict
-
-from backend.app.services.embedder import embedding_service
+from backend.app.services.cloudflare_embedder import (
+    cloudflare_embedding_service as embedding_service
+)
+# from backend.app.services.embedder import embedding_service
 from backend.app.services.qdrant_manager import QdrantManager
 from backend.app.services.llm_gateway import gateway
-from backend.app.services.reranker import reranker
+# from backend.app.services.reranker import reranker
+from backend.app.services.cloudflare_reranker import (
+    cloudflare_reranker as reranker
+)
 from backend.app.services.guardrails.retrieval_guardrails import(
     validate_retrieval_query,
     validate_case_id,
