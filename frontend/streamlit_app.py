@@ -1223,13 +1223,23 @@ with tab_report:
                     with st.spinner(
                     "Running multi-agent due-diligence analysis..."
                 ):
-                        st.write("DEBUG: About to call backend")
+                        endpoint = (
+                            f"/api/v1/due-diligence/"
+                            f"{st.session_state.case_id}/generate-report"
+                        )
 
-                        result = api_post(
-                        f"/api/v1/due-diligence/"
-                        f"{st.session_state.case_id}/generate-report",
-                    )
+                        st.write("DEBUG: About to call backend")
+                        st.write("DEBUG: Full API URL:", f"{API_URL}{endpoint}")
+
+                        result = api_post(endpoint)
+
                         st.write("DEBUG: Backend response received")
+                        # st.write("DEBUG: About to call backend")
+                    #     result = api_post(
+                    #     f"/api/v1/due-diligence/"
+                    #     f"{st.session_state.case_id}/generate-report",
+                    # )
+                    #     st.write("DEBUG: Backend response received")
                     st.session_state.report = result.get(
                     "report"
                 )
